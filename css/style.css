@@ -983,6 +983,7 @@ img {
 .qy-quote {
     margin: 0;
     padding: 1.5rem 1.75rem;
+    color: var(--night);
     background-color: var(--paper);
     border-left: 4px solid var(--amber);
     border-radius: var(--radius);
