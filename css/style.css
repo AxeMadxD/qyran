@@ -1072,3 +1072,296 @@ img {
         transition: none;
     }
 }
+
+html {
+    scroll-padding-top: 6rem;
+}
+
+.qy-pagehead--game {
+    background-image: linear-gradient(rgba(18, 22, 28, 0.86), rgba(18, 22, 28, 0.9)), url("../images/feathers.jpg");
+}
+
+.qy-pagehead--board {
+    background-image: linear-gradient(rgba(18, 22, 28, 0.86), rgba(18, 22, 28, 0.9)), url("../images/rehab.jpg");
+}
+
+.qy-pagehead--tickets {
+    background-image: linear-gradient(rgba(18, 22, 28, 0.86), rgba(18, 22, 28, 0.9)), url("../images/display.jpg");
+}
+
+.qy-btn:focus-visible {
+    outline: 3px solid var(--amber);
+    outline-offset: 2px;
+    box-shadow: none;
+}
+
+.qy-btn:disabled,
+.qy-btn[aria-disabled="true"] {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+.qy-btn--solid[aria-disabled="true"]:hover,
+.qy-btn--solid[aria-disabled="true"]:focus-visible {
+    background-color: var(--amber);
+    border-color: var(--amber);
+    color: var(--night);
+}
+
+.qy-btn--ghost[aria-disabled="true"]:hover,
+.qy-btn--ghost[aria-disabled="true"]:focus-visible {
+    background-color: transparent;
+    color: var(--night);
+}
+
+.game {
+    padding: 1.25rem;
+    background-color: var(--paper);
+    border: 1px solid var(--line);
+    border-top: 4px solid var(--amber);
+    border-radius: var(--radius);
+    transition: border-color 0.3s ease;
+}
+
+.game--won {
+    border-top-color: var(--ok);
+}
+
+.game--lost {
+    border-top-color: var(--crit);
+}
+
+.game__stats {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid var(--line);
+}
+
+.game__stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.game__label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--stone);
+}
+
+.game__num {
+    font-family: var(--font-display);
+    font-size: 1.9rem;
+    font-weight: 800;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+}
+
+.lives {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    min-height: 1.9rem;
+}
+
+.life {
+    width: 1.35rem;
+    height: 1.35rem;
+    background-color: var(--amber);
+    border: 2px solid var(--amber);
+    border-radius: 0 100% 0 100%;
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+
+.life--lost {
+    background-color: transparent;
+    border-color: var(--line);
+    transform: rotate(90deg) scale(0.8);
+}
+
+.duel {
+    display: grid;
+    gap: 0.75rem;
+    margin-block: 1.5rem;
+}
+
+.duel__vs {
+    margin: 0;
+    text-align: center;
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 800;
+    font-style: italic;
+    color: var(--amber);
+}
+
+.bird-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    min-height: 11.5rem;
+    padding: 1.4rem;
+    background-color: var(--night);
+    color: var(--bone);
+    border: 3px solid var(--night);
+    border-radius: var(--radius);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bird-card--next {
+    background-color: var(--pine);
+    border-color: var(--pine);
+}
+
+.bird-card__tag {
+    margin-bottom: 0.4rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--amber-soft);
+}
+
+.bird-card__name {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 1.2rem + 1vw, 1.9rem);
+    font-weight: 600;
+    line-height: 1.12;
+}
+
+.bird-card__latin {
+    margin: 0;
+    font-style: italic;
+    color: #a7aeb0;
+}
+
+.bird-card__span {
+    margin: auto 0 0;
+    padding-top: 0.9rem;
+    font-family: var(--font-display);
+    font-size: 2.6rem;
+    font-weight: 800;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    color: var(--amber);
+}
+
+.bird-card--hidden .bird-card__span {
+    color: var(--amber-soft);
+    opacity: 0.55;
+}
+
+.bird-card--right {
+    border-color: var(--ok);
+    box-shadow: 0 0 0 4px rgba(63, 122, 79, 0.3);
+}
+
+.bird-card--right .bird-card__tag {
+    color: #9fd3a9;
+}
+
+.bird-card--wrong {
+    border-color: var(--crit);
+    box-shadow: 0 0 0 4px rgba(179, 64, 47, 0.3);
+}
+
+.bird-card--wrong .bird-card__tag {
+    color: #f0a497;
+}
+
+.game__controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.game__btn {
+    flex: 1 1 10rem;
+}
+
+.game__message {
+    min-height: 3.3rem;
+    margin: 1.25rem 0 0;
+    padding: 0.8rem 1rem;
+    background-color: var(--bone);
+    border-left: 4px solid var(--line);
+    border-radius: var(--radius);
+}
+
+.game__message--good {
+    background-color: rgba(63, 122, 79, 0.12);
+    border-left-color: var(--ok);
+}
+
+.game__message--bad {
+    background-color: rgba(179, 64, 47, 0.1);
+    border-left-color: var(--crit);
+}
+
+.game__message--warn {
+    background-color: rgba(217, 138, 36, 0.14);
+    border-left-color: var(--amber);
+}
+
+.game__end {
+    display: none;
+    margin-top: 1.25rem;
+    padding: 1.75rem 1.5rem;
+    text-align: center;
+    border-radius: var(--radius);
+}
+
+.game--won .game__end,
+.game--lost .game__end {
+    display: block;
+}
+
+.game--won .game__end {
+    background-color: var(--ok);
+    color: #fff;
+}
+
+.game--lost .game__end {
+    background-color: var(--night);
+    color: var(--bone);
+    border-top: 4px solid var(--crit);
+}
+
+.game__end-title {
+    font-size: 1.9rem;
+    font-weight: 800;
+}
+
+.game__end-text {
+    max-width: 36ch;
+    margin-inline: auto;
+}
+
+.game--won .game__end .qy-btn--solid:hover,
+.game--won .game__end .qy-btn--solid:focus-visible {
+    background-color: var(--night);
+}
+
+@media (min-width: 40em) {
+    .game {
+        padding: 2rem;
+    }
+
+    .game__stats {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .duel {
+        grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+        align-items: stretch;
+    }
+
+    .duel__vs {
+        align-self: center;
+    }
+}

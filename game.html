@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Wider or narrower: a small game about the wingspans of the birds of prey that come to the Qyran rescue centre in the Kazakh Altai.">
+    <title>Wingspan game - Qyran rescue centre</title>
+    <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/game.js" defer></script>
+</head>
+<body>
+    <a class="visually-hidden-focusable qy-skip" href="#main">Skip to content</a>
+
+    <nav class="navbar navbar-expand-xl qy-nav sticky-top" data-bs-theme="dark">
+        <div class="container">
+            <a class="navbar-brand qy-brand" href="index.html">
+                <svg class="qy-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="M2.5 15.5c3.4.2 6-1.1 7.8-3.9L12 8.4l1.7 3.2c1.8 2.8 4.4 4.1 7.8 3.9" />
+                </svg>
+                <span>Qyran</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#qyMenu" aria-controls="qyMenu" aria-expanded="false" aria-label="Open the menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="qyMenu">
+                <ul class="navbar-nav ms-auto mb-2 mb-xl-0">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="birds.html">Birds in care</a></li>
+                    <li class="nav-item"><a class="nav-link" href="board.html">Patient board</a></li>
+                    <li class="nav-item"><a class="nav-link" href="visit.html">Visit</a></li>
+                    <li class="nav-item"><a class="nav-link" href="tickets.html">Tickets</a></li>
+                    <li class="nav-item"><a class="nav-link" href="support.html">Support</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="game.html">Game</a></li>
+                </ul>
+                <a class="btn qy-btn qy-btn--line ms-xl-3" href="tel:+77052140019">Rescue line 705 214 00 19</a>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main">
+        <header class="qy-pagehead qy-pagehead--game">
+            <div class="container">
+                <p class="qy-crumb"><a href="index.html">Home</a> &rsaquo; Wingspan game</p>
+                <p class="qy-eyebrow qy-eyebrow--light">Higher or lower</p>
+                <h1 class="qy-display">Which bird is wider?</h1>
+                <p class="qy-muted qy-muted--light mb-0">People bring us &ldquo;a small hawk&rdquo; and it turns out to be an eagle with a two metre wingspan. Look at the bird on the left and guess if the next one has wider or narrower wings.</p>
+            </div>
+        </header>
+
+        <section class="qy-section">
+            <div class="container">
+                <div class="row g-4 gy-5">
+                    <div class="col-lg-8">
+                        <div class="game" id="game">
+                            <div class="game__stats">
+                                <div class="game__stat">
+                                    <span class="game__label">Lives</span>
+                                    <span class="lives" id="lives" role="img"></span>
+                                </div>
+                                <div class="game__stat">
+                                    <span class="game__label">Streak</span>
+                                    <span class="game__num" id="streak"></span>
+                                </div>
+                                <div class="game__stat">
+                                    <span class="game__label">Best streak</span>
+                                    <span class="game__num" id="best"></span>
+                                </div>
+                                <div class="game__stat">
+                                    <span class="game__label">Streak to win</span>
+                                    <span class="game__num" id="goal"></span>
+                                </div>
+                            </div>
+
+                            <div class="duel">
+                                <div class="bird-card" id="current">
+                                    <p class="bird-card__tag">This bird</p>
+                                    <p class="bird-card__name" id="current-name">Loading the birds...</p>
+                                    <p class="bird-card__latin" id="current-latin"></p>
+                                    <p class="bird-card__span" id="current-span"></p>
+                                </div>
+                                <p class="duel__vs" aria-hidden="true">vs</p>
+                                <div class="bird-card bird-card--next" id="next">
+                                    <p class="bird-card__tag" id="next-tag">Next bird</p>
+                                    <p class="bird-card__name" id="next-name">Loading the birds...</p>
+                                    <p class="bird-card__latin" id="next-latin"></p>
+                                    <p class="bird-card__span" id="next-span"></p>
+                                </div>
+                            </div>
+
+                            <div class="game__controls">
+                                <button type="button" class="btn qy-btn qy-btn--solid game__btn" id="wider">Wider &uarr;</button>
+                                <button type="button" class="btn qy-btn qy-btn--solid game__btn" id="narrower">Narrower &darr;</button>
+                                <button type="button" class="btn qy-btn qy-btn--ghost game__btn" id="next-bird">Next bird &rarr;</button>
+                            </div>
+
+                            <p class="game__message" id="message" role="status" aria-live="polite"></p>
+
+                            <div class="game__end" id="end">
+                                <h2 class="game__end-title" id="end-title">Game over</h2>
+                                <p class="game__end-text" id="end-text"></p>
+                                <button type="button" class="btn qy-btn qy-btn--solid" id="play-again">Play again</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="qy-aside">
+                            <h2 class="qy-aside__title">How to play</h2>
+                            <dl class="qy-facts">
+                                <dt>Guess</dt>
+                                <dd>Wider or narrower than the bird on the left? The wingspan of the next bird is hidden until you choose.</dd>
+                                <dt>Same size</dt>
+                                <dd>If both birds have the same wingspan, any guess counts as right.</dd>
+                                <dt>Mistakes</dt>
+                                <dd>A wrong guess costs one life and the streak starts again from zero. No lives left means the end of the game.</dd>
+                                <dt>Keyboard</dt>
+                                <dd>Arrow up for wider, arrow down for narrower, arrow right for the next bird.</dd>
+                            </dl>
+                        </div>
+                        <button type="button" class="btn qy-btn qy-btn--ghost w-100 mt-4" id="restart">Start a new game</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="qy-section qy-section--bone">
+            <div class="container">
+                <div class="row align-items-center g-4 gy-5">
+                    <div class="col-lg-7">
+                        <p class="qy-eyebrow">Why a game</p>
+                        <h2 class="qy-h2">Size is the first thing people get wrong</h2>
+                        <p class="qy-muted">A shepherd who knows that a golden eagle is wider than a man is tall will not try to carry it in a shopping bag. Twenty species in the game live in the Altai or fly over it, and every number is the largest wingspan of an adult bird, rounded to five centimetres.</p>
+                        <a class="btn qy-btn qy-btn--ghost mt-2" href="birds.html">See the birds in care</a>
+                    </div>
+                    <div class="col-lg-5">
+                        <figure class="qy-frame">
+                            <img src="images/golden-eagle.jpg" alt="Close-up portrait of a golden eagle" width="1200" height="800" loading="lazy">
+                            <figcaption>A golden eagle opens 2.3 metres of wing, more than the height of any visitor.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="qy-footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <p class="qy-brand qy-brand--footer">
+                        <svg class="qy-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                            <path d="M2.5 15.5c3.4.2 6-1.1 7.8-3.9L12 8.4l1.7 3.2c1.8 2.8 4.4 4.1 7.8 3.9" />
+                        </svg>
+                        <span>Qyran</span>
+                    </p>
+                    <p class="qy-muted qy-muted--light">Bird of prey rescue centre, Katon-Karagay district, East Kazakhstan.</p>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <h3>Pages</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="birds.html">Birds in care</a></li>
+                        <li><a href="board.html">Patient board</a></li>
+                        <li><a href="visit.html">Visit</a></li>
+                        <li><a href="tickets.html">Tickets</a></li>
+                        <li><a href="support.html">Support</a></li>
+                        <li><a href="game.html">Wingspan game</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-lg-2">
+                    <h3>Open</h3>
+                    <ul>
+                        <li>Friday &ndash; Sunday</li>
+                        <li>10:00 &ndash; 17:00</li>
+                        <li>Tours 11:00, 15:00</li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><a href="tel:+77052140019">+7 705 214 00 19</a></li>
+                        <li><a href="mailto:hello@qyran.kz">hello@qyran.kz</a></li>
+                        <li>Qarasai street 14, Berel village</li>
+                    </ul>
+                </div>
+            </div>
+            <p class="qy-bottom mb-0">Student project by Akhmad Zhagiparov, IT-2510, Astana IT University, 2026. Photos from Wikimedia Commons: Giles Laurent, Fimb, Ezra Sheyner, Quartl, Alexis Lours, AngMoKio, Rhododendrites, Richard Bartz, USFWS, Altaihunters, Rayrayokocha, SlipKOT86, Martin Dawes (CC BY, CC BY-SA, public domain). Built with Bootstrap 5.3 and the fonts Fraunces and Karla.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
