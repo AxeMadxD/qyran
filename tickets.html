@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Book tickets for the 2027 season at the Qyran rescue centre: guided tours, falconry talks and photography mornings, with a live ticket preview.">
+    <title>Tickets - Qyran rescue centre</title>
+    <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/tickets.js" defer></script>
+</head>
+<body>
+    <a class="visually-hidden-focusable qy-skip" href="#main">Skip to content</a>
+
+    <nav class="navbar navbar-expand-xl qy-nav sticky-top" data-bs-theme="dark">
+        <div class="container">
+            <a class="navbar-brand qy-brand" href="index.html">
+                <svg class="qy-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="M2.5 15.5c3.4.2 6-1.1 7.8-3.9L12 8.4l1.7 3.2c1.8 2.8 4.4 4.1 7.8 3.9" />
+                </svg>
+                <span>Qyran</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#qyMenu" aria-controls="qyMenu" aria-expanded="false" aria-label="Open the menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="qyMenu">
+                <ul class="navbar-nav ms-auto mb-2 mb-xl-0">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="birds.html">Birds in care</a></li>
+                    <li class="nav-item"><a class="nav-link" href="board.html">Patient board</a></li>
+                    <li class="nav-item"><a class="nav-link" href="visit.html">Visit</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="tickets.html">Tickets</a></li>
+                    <li class="nav-item"><a class="nav-link" href="support.html">Support</a></li>
+                    <li class="nav-item"><a class="nav-link" href="game.html">Game</a></li>
+                </ul>
+                <a class="btn qy-btn qy-btn--line ms-xl-3" href="tel:+77052140019">Rescue line 705 214 00 19</a>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main">
+        <header class="qy-pagehead qy-pagehead--tickets">
+            <div class="container">
+                <p class="qy-crumb"><a href="index.html">Home</a> &rsaquo; <a href="visit.html">Visit</a> &rsaquo; Tickets</p>
+                <p class="qy-eyebrow qy-eyebrow--light">Season 2027 &middot; May to October</p>
+                <h1 class="qy-display">Book a morning with the birds</h1>
+                <p class="qy-muted qy-muted--light mb-0">Tickets for next season are already on sale. Choose a programme and a day, and the ticket preview fills in while you type. It is only issued when every field is correct.</p>
+            </div>
+        </header>
+
+        <section class="qy-section">
+            <div class="container">
+                <div class="row g-4 gy-5">
+                    <div class="col-lg-7">
+                        <div class="qy-summary" id="summary" role="alert">
+                            <h2 class="qy-summary__title" id="summary-title">Some fields need fixing</h2>
+                            <ul class="qy-summary__list" id="summary-list"></ul>
+                        </div>
+
+                        <form class="qy-form" id="ticket-form" action="#" method="get">
+                            <fieldset>
+                                <legend>Your visit</legend>
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="programme" class="form-label">Programme</label>
+                                        <select class="form-select" id="programme" name="programme" required aria-describedby="programme-error">
+                                            <option value="" selected disabled>Choose...</option>
+                                        </select>
+                                        <p class="qy-error" id="programme-error"></p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="date" class="form-label">Day</label>
+                                        <input type="date" class="form-control" id="date" name="date" required min="2027-05-01" max="2027-10-31" aria-describedby="date-hint date-error">
+                                        <p class="qy-hint" id="date-hint">Friday, Saturday or Sunday, May to October 2027</p>
+                                        <p class="qy-error" id="date-error"></p>
+                                    </div>
+                                    <div class="col-12">
+                                        <fieldset class="qy-choice">
+                                            <legend class="form-label qy-choice__legend">Ticket type</legend>
+                                            <div class="qy-types" id="types"></div>
+                                            <p class="qy-error" id="type-error"></p>
+                                        </fieldset>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="quantity" class="form-label">Number of tickets</label>
+                                        <input type="number" class="form-control" id="quantity" name="quantity" required min="1" max="6" step="1" value="1" inputmode="numeric" aria-describedby="quantity-hint quantity-error">
+                                        <p class="qy-hint" id="quantity-hint">Up to six in one booking</p>
+                                        <p class="qy-error" id="quantity-error"></p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="promo" class="form-label">Promo code, if you have one</label>
+                                        <input type="text" class="form-control" id="promo" name="promo" maxlength="12" autocomplete="off" spellcheck="false" aria-describedby="promo-hint promo-error">
+                                        <p class="qy-hint" id="promo-hint">Volunteers and the Eagle Festival give them out</p>
+                                        <p class="qy-error" id="promo-error"></p>
+                                    </div>
+                                </div>
+                            </fieldset>
+
+                            <fieldset>
+                                <legend>Who is coming</legend>
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="name" class="form-label">Name and surname</label>
+                                        <input type="text" class="form-control" id="name" name="name" required minlength="3" maxlength="60" autocomplete="name" aria-describedby="name-hint name-error">
+                                        <p class="qy-hint" id="name-hint">As in your ID, the falconer checks it at the gate</p>
+                                        <p class="qy-error" id="name-error"></p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="email" class="form-label">Email</label>
+                                        <input type="email" class="form-control" id="email" name="email" required maxlength="80" autocomplete="email" aria-describedby="email-hint email-error">
+                                        <p class="qy-hint" id="email-hint">We send the ticket there</p>
+                                        <p class="qy-error" id="email-error"></p>
+                                    </div>
+                                </div>
+                            </fieldset>
+
+                            <button type="submit" class="btn qy-btn qy-btn--solid">Book tickets</button>
+                        </form>
+                    </div>
+
+                    <div class="col-lg-5">
+                        <div class="ticket-side">
+                            <p class="qy-eyebrow">Live preview</p>
+                            <article class="ticket" id="preview" aria-label="Ticket preview">
+                                <div class="ticket__main">
+                                    <div class="ticket__top">
+                                        <p class="ticket__brand">Qyran &middot; Berel</p>
+                                        <p class="ticket__stamp" id="p-stamp"></p>
+                                    </div>
+                                    <h2 class="ticket__title" id="p-programme">Choose a programme</h2>
+                                    <dl class="ticket__facts">
+                                        <div><dt>Day</dt><dd id="p-date"></dd></div>
+                                        <div><dt>Time</dt><dd id="p-time"></dd></div>
+                                        <div><dt>Tickets</dt><dd id="p-tickets"></dd></div>
+                                        <div><dt>Name</dt><dd id="p-name"></dd></div>
+                                        <div><dt>Email</dt><dd id="p-email"></dd></div>
+                                    </dl>
+                                </div>
+                                <div class="ticket__stub">
+                                    <dl class="ticket__money">
+                                        <div><dt>Price</dt><dd id="p-price"></dd></div>
+                                        <div><dt>Discount</dt><dd id="p-discount"></dd></div>
+                                        <div class="ticket__total"><dt>Total</dt><dd id="p-total"></dd></div>
+                                    </dl>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="qy-section qy-section--bone" id="booked">
+            <div class="container">
+                <p class="qy-eyebrow">Booked on this page</p>
+                <h2 class="qy-h2 mb-4">Your tickets</h2>
+                <p class="booked__empty" id="booked-empty">No tickets yet. A booked ticket appears here with its booking code, and the seats it took disappear from the form.</p>
+                <ol class="booked__list" id="tickets"></ol>
+            </div>
+        </section>
+    </main>
+
+    <footer class="qy-footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <p class="qy-brand qy-brand--footer">
+                        <svg class="qy-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                            <path d="M2.5 15.5c3.4.2 6-1.1 7.8-3.9L12 8.4l1.7 3.2c1.8 2.8 4.4 4.1 7.8 3.9" />
+                        </svg>
+                        <span>Qyran</span>
+                    </p>
+                    <p class="qy-muted qy-muted--light">Bird of prey rescue centre, Katon-Karagay district, East Kazakhstan.</p>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <h3>Pages</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="birds.html">Birds in care</a></li>
+                        <li><a href="board.html">Patient board</a></li>
+                        <li><a href="visit.html">Visit</a></li>
+                        <li><a href="tickets.html">Tickets</a></li>
+                        <li><a href="support.html">Support</a></li>
+                        <li><a href="game.html">Wingspan game</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-lg-2">
+                    <h3>Open</h3>
+                    <ul>
+                        <li>Friday &ndash; Sunday</li>
+                        <li>10:00 &ndash; 17:00</li>
+                        <li>Tours 11:00, 15:00</li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><a href="tel:+77052140019">+7 705 214 00 19</a></li>
+                        <li><a href="mailto:hello@qyran.kz">hello@qyran.kz</a></li>
+                        <li>Qarasai street 14, Berel village</li>
+                    </ul>
+                </div>
+            </div>
+            <p class="qy-bottom mb-0">Student project by Akhmad Zhagiparov, IT-2510, Astana IT University, 2026. Photos from Wikimedia Commons: Giles Laurent, Fimb, Ezra Sheyner, Quartl, Alexis Lours, AngMoKio, Rhododendrites, Richard Bartz, USFWS, Altaihunters, Rayrayokocha, SlipKOT86, Martin Dawes (CC BY, CC BY-SA, public domain). Built with Bootstrap 5.3 and the fonts Fraunces and Karla.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
