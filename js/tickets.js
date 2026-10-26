@@ -261,7 +261,7 @@ function isReady() {
 
 function buildProgrammes() {
     for (const programme of PROGRAMMES) {
-        const option = el("option", "", programme.name + " · " + programme.time + " · " + money(programme.price));
+        const option = el("option", "", programme.name + " · " + money(programme.price));
         option.value = programme.id;
         programmeSelect.append(option);
     }
