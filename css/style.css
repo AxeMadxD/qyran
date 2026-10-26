@@ -1365,3 +1365,382 @@ html {
         align-self: center;
     }
 }
+
+.board-tools {
+    display: grid;
+    gap: 1rem;
+    padding: 1.25rem;
+    background-color: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+}
+
+.board-tools .form-label {
+    margin-bottom: 0.4rem;
+}
+
+.board-summary {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.board-summary__progress,
+.board-summary__food {
+    padding: 1.25rem 1.5rem;
+    background-color: var(--night);
+    color: var(--bone);
+    border-radius: var(--radius);
+}
+
+.board-summary__label {
+    display: block;
+    margin-bottom: 0.6rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--amber-soft);
+}
+
+.board-summary__num {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1;
+    color: var(--amber);
+}
+
+.board-summary__text {
+    margin: 0.5rem 0 0;
+    font-size: 0.9rem;
+    color: #a7aeb0;
+}
+
+.board-progress {
+    display: block;
+    width: 100%;
+    height: 0.9rem;
+    appearance: none;
+    border: 0;
+    border-radius: 999px;
+    background-color: #343b42;
+    overflow: hidden;
+}
+
+.board-progress::-webkit-progress-bar {
+    background-color: #343b42;
+    border-radius: 999px;
+}
+
+.board-progress::-webkit-progress-value {
+    background-image: linear-gradient(90deg, var(--amber), var(--amber-soft));
+    border-radius: 999px;
+    transition: width 0.4s ease;
+}
+
+.board-progress::-moz-progress-bar {
+    background-image: linear-gradient(90deg, var(--amber), var(--amber-soft));
+    border-radius: 999px;
+}
+
+.board-status {
+    margin: 1rem 0 0;
+    padding: 0.75rem 1rem;
+    border-left: 4px solid var(--line);
+    border-radius: var(--radius);
+    background-color: var(--paper);
+}
+
+.board-status:empty {
+    display: none;
+}
+
+.board-status--ok {
+    border-left-color: var(--ok);
+    background-color: rgba(63, 122, 79, 0.12);
+}
+
+.board-status--blocked {
+    border-left-color: var(--crit);
+    background-color: rgba(179, 64, 47, 0.1);
+    color: #7d2a1f;
+}
+
+.board-nothing {
+    display: none;
+    margin-top: 1rem;
+    padding: 1.5rem;
+    text-align: center;
+    background-color: var(--paper);
+    border: 2px dashed var(--line);
+    border-radius: var(--radius);
+}
+
+.board-nothing--shown {
+    display: block;
+}
+
+.board-nothing__text {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+}
+
+.board {
+    display: grid;
+    gap: 1.25rem;
+    margin-top: 1.25rem;
+}
+
+.lane {
+    padding: 1rem;
+    background-color: var(--bone-2);
+    border-top: 4px solid var(--stone);
+    border-radius: var(--radius);
+}
+
+.lane--treatment {
+    border-top-color: var(--amber);
+}
+
+.lane--corridor {
+    border-top-color: var(--pine);
+}
+
+.lane--released {
+    border-top-color: var(--ok);
+}
+
+.lane__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.5rem;
+}
+
+.lane__title {
+    margin: 0;
+    font-size: 1.3rem;
+}
+
+.lane__count {
+    padding: 0.05rem 0.65rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    color: var(--bone);
+    background-color: var(--night);
+    border-radius: 999px;
+}
+
+.lane--full .lane__count {
+    background-color: var(--crit);
+}
+
+.lane__note {
+    margin: 0.25rem 0 0.75rem;
+    font-size: 0.85rem;
+    color: var(--stone);
+}
+
+.lane__full {
+    margin: 0 0 0.75rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--crit);
+}
+
+.lane__list {
+    display: grid;
+    gap: 0.75rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.lane__empty {
+    padding: 1.25rem 1rem;
+    font-size: 0.9rem;
+    text-align: center;
+    color: var(--stone);
+    border: 2px dashed var(--line);
+    border-radius: var(--radius);
+}
+
+.patient {
+    display: grid;
+    gap: 0.45rem;
+    padding: 1rem;
+    background-color: var(--paper);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--stone);
+    border-radius: var(--radius);
+    transition: box-shadow 0.2s ease;
+}
+
+.patient:hover {
+    box-shadow: 0 0.6rem 1.2rem rgba(18, 22, 28, 0.1);
+}
+
+.patient:focus {
+    outline: none;
+}
+
+.patient:focus-visible {
+    outline: 3px solid var(--amber);
+    outline-offset: 2px;
+}
+
+.patient--p1 {
+    border-left-color: var(--crit);
+}
+
+.patient--p2 {
+    border-left-color: var(--amber);
+}
+
+.patient--critical {
+    background-color: #fbf1ee;
+}
+
+.patient--blocked {
+    border-color: var(--crit);
+    box-shadow: 0 0 0 3px rgba(179, 64, 47, 0.25);
+    animation: patient-shake 0.35s ease;
+}
+
+.patient__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0.5rem;
+}
+
+.patient__name {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.patient__chips {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0.3rem;
+}
+
+.patient__priority {
+    background-color: var(--stone);
+}
+
+.patient--p1 .patient__priority {
+    background-color: var(--crit);
+}
+
+.patient--p2 .patient__priority {
+    background-color: var(--amber);
+    color: var(--night);
+}
+
+.patient__species {
+    margin: 0;
+    font-size: 0.92rem;
+    color: var(--stone);
+}
+
+.patient__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.patient__tag {
+    padding: 0.05rem 0.5rem;
+    font-size: 0.75rem;
+    background-color: var(--bone);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+}
+
+.patient__meta {
+    margin: 0;
+    font-size: 0.82rem;
+    color: var(--stone);
+}
+
+.patient__reason {
+    margin: 0;
+    padding: 0.5rem 0.7rem;
+    font-size: 0.85rem;
+    color: #7d2a1f;
+    background-color: rgba(179, 64, 47, 0.1);
+    border-radius: var(--radius);
+}
+
+.patient__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.35rem;
+}
+
+.patient__btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--night);
+    background-color: transparent;
+    border: 2px solid var(--night);
+    border-radius: var(--radius);
+}
+
+.patient__btn--main {
+    background-color: var(--amber);
+    border-color: var(--amber);
+}
+
+.patient__btn:hover,
+.patient__btn:focus-visible {
+    color: var(--bone);
+    background-color: var(--night);
+    border-color: var(--night);
+}
+
+.patient__btn:focus-visible {
+    outline: 3px solid var(--amber);
+    outline-offset: 2px;
+    box-shadow: none;
+}
+
+@keyframes patient-shake {
+    25% {
+        transform: translateX(-4px);
+    }
+
+    75% {
+        transform: translateX(4px);
+    }
+}
+
+@media (min-width: 48em) {
+    .board-tools {
+        grid-template-columns: 2fr 1fr 1fr;
+        align-items: end;
+    }
+
+    .board-summary {
+        grid-template-columns: 2fr 1fr;
+    }
+}
+
+@media (min-width: 62em) {
+    .board {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        align-items: start;
+    }
+}
