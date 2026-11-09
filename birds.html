@@ -46,8 +46,8 @@
             <div class="container">
                 <p class="qy-crumb"><a href="index.html">Home</a> &rsaquo; Birds in care</p>
                 <p class="qy-eyebrow qy-eyebrow--light">The patient list</p>
-                <h1 class="qy-display">Eleven birds are in the aviaries this week</h1>
-                <p class="qy-muted qy-muted--light mb-0">Two of them you can meet on a tour. The other nine are in the hospital block, where nobody sees them except the vet, because a bird that gets used to people cannot be released.</p>
+                <h1 class="qy-display">Twelve birds are in the aviaries this week</h1>
+                <p class="qy-muted qy-muted--light mb-0">Three of them live here for good and meet visitors on a tour. The other nine are patients in the hospital block, where nobody sees them except the vet, because a bird that gets used to people cannot be released.</p>
             </div>
         </header>
 
@@ -55,97 +55,59 @@
             <div class="container">
                 <div class="row g-4 gy-5">
                     <div class="col-lg-8">
-                        <p class="qy-eyebrow">October 2026</p>
+                        <p class="qy-eyebrow">November 2026</p>
                         <h2 class="qy-h2">Who is here right now</h2>
-                        <p class="qy-muted">We update this table every Monday. &ldquo;Stage&rdquo; is where the bird is in the route: the hospital box, the quiet aviary, the forty metre flight corridor, or already waiting for the release day.</p>
+                        <p class="qy-muted">The list below is built from the centre&rsquo;s own patient file, so it is the same data the vet writes into every Monday. Search a name, a species or a reason, filter by stage, sort the birds, and switch between the cards and the plain table.</p>
 
-                        <div class="table-responsive mt-4">
-                            <table class="table qy-table align-middle">
-                                <caption>Birds admitted to the centre, state on 5 October 2026</caption>
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Species</th>
-                                        <th scope="col">Admitted</th>
-                                        <th scope="col">Reason</th>
-                                        <th scope="col">Stage</th>
-                                        <th scope="col">Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row" class="qy-table__name">Altyn</th>
-                                        <td>Imperial eagle</td>
-                                        <td>12 Jun 2026</td>
-                                        <td>Power line, burned primaries</td>
-                                        <td>Quiet aviary</td>
-                                        <td><span class="qy-chip qy-chip--care">In care</span></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row" class="qy-table__name">Zhel</th>
-                                        <td>Steppe eagle</td>
-                                        <td>2 Mar 2026</td>
-                                        <td>Starvation, first winter</td>
-                                        <td>Flight corridor</td>
-                                        <td><span class="qy-chip qy-chip--ready">Ready</span></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row" class="qy-table__name">Qyz</th>
-                                        <td>Saker falcon</td>
-                                        <td>28 Apr 2026</td>
-                                        <td>Confiscated from a car</td>
-                                        <td>Flight corridor</td>
-                                        <td><span class="qy-chip qy-chip--care">In care</span></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row" class="qy-table__name">Boran</th>
-                                        <td>Common kestrel</td>
-                                        <td>19 Jul 2026</td>
-                                        <td>Nest lost during roof repair</td>
-                                        <td>Flight corridor</td>
-                                        <td><span class="qy-chip qy-chip--ready">Ready</span></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row" class="qy-table__name">Kishkentai</th>
-                                        <td>Little owl</td>
-                                        <td>21 Sep 2026</td>
-                                        <td>Car collision, concussion</td>
-                                        <td>Hospital box</td>
-                                        <td><span class="qy-chip qy-chip--care">In care</span></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row" class="qy-table__name">Kok</th>
-                                        <td>Black kite</td>
-                                        <td>30 Sep 2026</td>
-                                        <td>Lead poisoning</td>
-                                        <td>Hospital box</td>
-                                        <td><span class="qy-chip qy-chip--crit">Critical</span></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row" class="qy-table__name">Tuman</th>
-                                        <td>Eagle owl</td>
-                                        <td>2021</td>
-                                        <td>Lost an eye, cannot hunt</td>
-                                        <td>Resident aviary</td>
-                                        <td><span class="qy-chip qy-chip--resident">Resident</span></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row" class="qy-table__name">Aqtas</th>
-                                        <td>Golden eagle</td>
-                                        <td>2022</td>
-                                        <td>Shot, wing amputated</td>
-                                        <td>Resident aviary</td>
-                                        <td><span class="qy-chip qy-chip--resident">Resident</span></td>
-                                    </tr>
-                                </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <td colspan="6">Eight of the eleven birds are shown. Three young kestrels from the July nest are kept behind a screen and are not listed, because they must not see a human face before the release.</td>
-                                    </tr>
-                                </tfoot>
-                            </table>
+                        <div class="bird-summary" id="bird-summary"></div>
+
+                        <div class="qy-toolbar">
+                            <div class="qy-toolbar__search">
+                                <label class="form-label" for="bird-search">Search the patient file</label>
+                                <input type="search" class="form-control" id="bird-search" placeholder="eagle, power line, corridor&hellip;" autocomplete="off">
+                                <p class="qy-toolbar__hint">Name, species, Latin name, stage or reason. Esc clears it.</p>
+                            </div>
+                            <div class="qy-toolbar__selects">
+                                <div>
+                                    <label class="form-label" for="bird-species">Species</label>
+                                    <select class="form-select" id="bird-species">
+                                        <option value="all">Every species</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="form-label" for="bird-sort">Order</label>
+                                    <select class="form-select" id="bird-sort">
+                                        <option value="stage">Most urgent first</option>
+                                        <option value="name">Name, A to Z</option>
+                                        <option value="wingspan">Widest wingspan</option>
+                                        <option value="newest">Newest admission</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
-                        <a class="btn qy-btn qy-btn--ghost mt-4" href="board.html">Open the patient board</a>
+
+                        <div class="qy-toolbar__row">
+                            <div class="qy-filters" id="bird-filters" role="group" aria-label="Filter by stage">
+                                <button type="button" class="qy-filter" data-status="all" aria-pressed="true">All</button>
+                                <button type="button" class="qy-filter" data-status="critical" aria-pressed="false">Critical</button>
+                                <button type="button" class="qy-filter" data-status="care" aria-pressed="false">In care</button>
+                                <button type="button" class="qy-filter" data-status="ready" aria-pressed="false">Ready</button>
+                                <button type="button" class="qy-filter" data-status="resident" aria-pressed="false">Residents</button>
+                            </div>
+                            <div class="qy-viewswitch" role="group" aria-label="How to show the birds">
+                                <button type="button" data-view="cards" aria-pressed="true">Cards</button>
+                                <button type="button" data-view="table" aria-pressed="false">Table</button>
+                            </div>
+                        </div>
+
+                        <p class="qy-count" id="bird-count" role="status" aria-live="polite"></p>
+
+                        <div id="bird-results"></div>
+
+                        <div class="d-flex flex-wrap gap-3 mt-4">
+                            <button type="button" class="btn qy-btn qy-btn--ghost" id="bird-reset">Clear the filters</button>
+                            <a class="btn qy-btn qy-btn--ghost" href="board.html">Open the patient board</a>
+                        </div>
                     </div>
 
                     <div class="col-lg-4">
@@ -217,7 +179,7 @@
                     </div>
 
                     <div class="col-lg-5">
-                        <figure class="qy-frame">
+                        <figure class="qy-frame qy-zoom">
                             <img src="images/feathers.jpg" alt="Close-up of the layered wing feathers of an eagle" width="1200" height="800">
                             <figcaption>One flight feather of a golden eagle is longer than the whole kestrel on the chart.</figcaption>
                         </figure>
@@ -371,10 +333,15 @@
                     </ul>
                 </div>
             </div>
-            <p class="qy-bottom mb-0">Student project by Akhmad Zhagiparov, IT-2510, Astana IT University, 2026. Photos from Wikimedia Commons: Giles Laurent, Fimb, Ezra Sheyner, Quartl, Alexis Lours, AngMoKio, Rhododendrites, Richard Bartz, USFWS, Altaihunters, Rayrayokocha, SlipKOT86, Martin Dawes (CC BY, CC BY-SA, public domain). Built with Bootstrap 5.3 and the fonts Fraunces and Karla.</p>
+            <p class="qy-bottom mb-0">Student project by Akhmad Zhagiparov, IT-2510, Astana IT University, 2026. Photos from Wikimedia Commons: Giles Laurent, Fimb, Ezra Sheyner, Quartl, Alexis Lours, AngMoKio, Rhododendrites, Richard Bartz, USFWS, Altaihunters, Rayrayokocha, SlipKOT86, Martin Dawes (CC BY, CC BY-SA, public domain). Built with Bootstrap 5.3, jQuery 3.7.1 and the fonts Fraunces and Karla, all from public CDNs. AI assistance: Claude (Anthropic) was used while writing and reviewing the JavaScript and for proofreading the English. Everything else — the topic, the content, the design and the data — is my own.</p>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.7.1.min.js"><\/script>');</script>
+    <script src="js/data.js"></script>
+    <script src="js/birds.js"></script>
+    <script src="js/effects.js"></script>
 </body>
 </html>
