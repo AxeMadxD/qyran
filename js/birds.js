@@ -179,8 +179,8 @@ function buildTable(list) {
 function buildEmpty() {
     const box = node("div", "qy-empty");
     box.appendChild(node("p", "qy-empty__title", "Nothing found"));
-    box.appendChild(node("p", "qy-empty__text", "No bird matches “" + view.query + "” with these filters. The centre has twelve birds in total — try a species, a name or the word “power line”."));
-    const button = node("button", "qy-btn qy-btn--solid", "Show all twelve birds");
+    box.appendChild(node("p", "qy-empty__text", "No bird matches “" + view.query + "” with these filters. The centre has twenty birds in total — try a species, a name or the word “power line”."));
+    const button = node("button", "qy-btn qy-btn--solid", "Show all twenty birds");
     button.type = "button";
     button.id = "bird-reset-empty";
     box.appendChild(button);

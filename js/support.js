@@ -516,7 +516,7 @@ document.getElementById("adopt-next").addEventListener("click", function (event)
     if (this.getAttribute("aria-disabled") === "true") {
         event.preventDefault();
         if (window.qyToast) {
-            qyToast("Choose one of the twelve birds first.", "warn");
+            qyToast("Choose one of the twenty birds first.", "warn");
         }
         document.querySelector(".adopt-bird").focus();
         return;
