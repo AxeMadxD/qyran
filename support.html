@@ -92,44 +92,47 @@
         <section class="qy-section qy-section--bone" id="adopt">
             <div class="container">
                 <p class="qy-eyebrow">Adopt a bird</p>
-                <h2 class="qy-h2 mb-2">Three levels, one bird</h2>
-                <p class="qy-muted mb-4">You choose the resident yourself: Tuman the eagle owl, Aqtas the golden eagle, or any of the other seven.</p>
+                <h2 class="qy-h2 mb-2">Build your support</h2>
+                <p class="qy-muted mb-4">Choose the bird, choose the level, add what the kitchen needs this month. Everything on the right is counted while you choose, and the bars show where a month of your money actually goes.</p>
 
-                <div class="qy-plans">
-                    <article class="qy-plan">
-                        <h3 class="qy-h3">Friend</h3>
-                        <p class="qy-plan__price">3 000 &#8376; <span>/ month</span></p>
-                        <ul>
-                            <li>Your name on the aviary board</li>
-                            <li>Photo report every month</li>
-                            <li>One free tour a year</li>
-                        </ul>
-                        <a class="btn qy-btn qy-btn--ghost" href="#report">Choose Friend</a>
-                    </article>
+                <div class="adopt">
+                    <div class="adopt__picker">
+                        <h3 class="qy-h3 adopt__step">1. Choose a bird</h3>
+                        <p class="qy-muted adopt__hint">Three residents live here for good. The nine patients can be supported through their treatment, and you get the release report instead of a visit.</p>
+                        <div class="adopt__birds" id="adopt-birds"></div>
 
-                    <article class="qy-plan qy-plan--featured">
-                        <p class="qy-plan__badge">Most chosen</p>
-                        <h3 class="qy-h3">Keeper</h3>
-                        <p class="qy-plan__price">12 000 &#8376; <span>/ month</span></p>
-                        <ul>
-                            <li>Everything from Friend</li>
-                            <li>Half of one bird&rsquo;s food</li>
-                            <li>Weight chart and vet notes</li>
-                            <li>A visit on a closed day, with the falconer</li>
-                        </ul>
-                        <a class="btn qy-btn qy-btn--solid" href="#report">Choose Keeper</a>
-                    </article>
+                        <h3 class="qy-h3 adopt__step">2. Choose a level</h3>
+                        <div class="adopt__levels" id="adopt-levels"></div>
 
-                    <article class="qy-plan">
-                        <h3 class="qy-h3">Guardian</h3>
-                        <p class="qy-plan__price">24 000 &#8376; <span>/ month</span></p>
-                        <ul>
-                            <li>Everything from Keeper</li>
-                            <li>The whole month of food for one eagle</li>
-                            <li>Your name on the release report</li>
-                        </ul>
-                        <a class="btn qy-btn qy-btn--ghost" href="#report">Choose Guardian</a>
-                    </article>
+                        <h3 class="qy-h3 adopt__step">3. For how many months</h3>
+                        <div class="adopt__months" id="adopt-months" role="group" aria-label="For how many months">
+                            <label class="adopt__month"><input type="radio" name="months" value="1"> 1</label>
+                            <label class="adopt__month"><input type="radio" name="months" value="3"> 3</label>
+                            <label class="adopt__month"><input type="radio" name="months" value="6"> 6</label>
+                            <label class="adopt__month"><input type="radio" name="months" value="12" checked> 12</label>
+                        </div>
+
+                        <h3 class="qy-h3 adopt__step">4. Add what we need right now</h3>
+                        <div class="adopt__extras" id="adopt-extras"></div>
+                    </div>
+
+                    <aside class="adopt__summary" aria-label="Your support">
+                        <h3 class="adopt__summary-title">Your support</h3>
+                        <dl class="adopt__lines" id="adopt-lines"></dl>
+
+                        <p class="adopt__total-row">
+                            <span>Total</span>
+                            <strong id="adopt-total">0&nbsp;&#8376;</strong>
+                        </p>
+                        <p class="adopt__monthly">Of that, <span id="adopt-monthly">0&nbsp;&#8376;</span> every month.</p>
+
+                        <h4 class="adopt__spend-title">Where one month goes</h4>
+                        <div class="spend" id="adopt-spend"></div>
+                        <p class="adopt__source">The split is the real one from the table below: 18 kg of quail, one vitamin course, a month of bedding and one vet check make up a Guardian month.</p>
+
+                        <p class="adopt__warning" id="adopt-warning">No bird chosen yet, so there is nothing to send.</p>
+                        <a class="btn qy-btn qy-btn--solid adopt__next is-off" id="adopt-next" href="#pledge" aria-disabled="true">Choose a bird first</a>
+                    </aside>
                 </div>
 
                 <div class="row g-4 gy-5 mt-1">
@@ -195,6 +198,46 @@
             </div>
         </section>
 
+        <section class="qy-section" id="questions">
+            <div class="container">
+                <div class="row g-4 gy-5">
+                    <div class="col-lg-4">
+                        <p class="qy-eyebrow">Before you pledge</p>
+                        <h2 class="qy-h2">The four questions we are always asked</h2>
+                        <p class="qy-muted mb-0">If your question is not here, write it in the form below and we will answer by phone.</p>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="qy-acc">
+                            <div class="qy-acc__item">
+                                <button type="button" class="qy-acc__head" aria-expanded="false">Does my money go to one bird or to all of them?</button>
+                                <div class="qy-acc__panel">
+                                    <p>To the bird you choose, and the monthly report is about that bird: its weight, what it ate, what the vet wrote. The only shared part is the kitchen &mdash; we buy quail for the whole centre twice a year and take your bird&rsquo;s share out of it.</p>
+                                </div>
+                            </div>
+                            <div class="qy-acc__item">
+                                <button type="button" class="qy-acc__head" aria-expanded="false">What happens if the bird I support is released?</button>
+                                <div class="qy-acc__panel">
+                                    <p>You get the release report with the date, the ring number and the place, and your name is on it. After that you can move the support to another patient or stop it &mdash; a released bird costs us nothing, which is the whole point.</p>
+                                </div>
+                            </div>
+                            <div class="qy-acc__item">
+                                <button type="button" class="qy-acc__head" aria-expanded="false">Can I visit the bird I support?</button>
+                                <div class="qy-acc__panel">
+                                    <p>The three residents, yes: Keeper and Guardian include a visit on a closed day, with the falconer. The nine patients, no. A wild bird that gets used to a human face cannot be released, and that is more important than any visit.</p>
+                                </div>
+                            </div>
+                            <div class="qy-acc__item">
+                                <button type="button" class="qy-acc__head" aria-expanded="false">Can I give things instead of money?</button>
+                                <div class="qy-acc__panel">
+                                    <p>Yes, and the list is in step 4 above: quail, vitamins, bedding, a vet visit, a transport crate. Old towels and freezer space are always needed too &mdash; write to us and we will tell you where to bring them.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section class="qy-section" id="report">
             <div class="container">
                 <div class="row g-4 gy-5">
@@ -207,26 +250,32 @@
                         <p class="qy-muted mb-0">Qarasai street 14, Berel village<br>Katon-Karagay district, East Kazakhstan<br>hello@qyran.kz</p>
                     </div>
 
-                    <div class="col-lg-7">
-                        <form class="qy-form" action="#" method="get">
+                    <div class="col-lg-7" id="pledge">
+                        <p class="qy-chosen" id="pledge-summary"></p>
+
+                        <form class="qy-form" id="pledge-form" action="#" method="get" novalidate>
                             <fieldset>
                                 <legend>Who you are</legend>
                                 <div class="row g-3">
                                     <div class="col-md-6">
                                         <label for="name" class="form-label">Name</label>
-                                        <input type="text" class="form-control" id="name" name="name" placeholder="Name Surname" maxlength="60" required>
+                                        <input type="text" class="form-control" id="name" name="name" placeholder="Name Surname" maxlength="60" aria-describedby="err-name">
+                                        <p class="qy-error" id="err-name" role="alert" hidden></p>
                                     </div>
                                     <div class="col-md-6">
                                         <label for="phone" class="form-label">Phone</label>
-                                        <input type="tel" class="form-control" id="phone" name="phone" placeholder="+7 705 000 00 00" pattern="\+7 ?[0-9]{3} ?[0-9]{3} ?[0-9]{2} ?[0-9]{2}" required>
+                                        <input type="tel" class="form-control" id="phone" name="phone" placeholder="+7 705 000 00 00" aria-describedby="err-phone">
+                                        <p class="qy-error" id="err-phone" role="alert" hidden></p>
                                     </div>
                                     <div class="col-md-6">
                                         <label for="email" class="form-label">E-mail</label>
-                                        <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com">
+                                        <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com" aria-describedby="err-email">
+                                        <p class="qy-error" id="err-email" role="alert" hidden></p>
                                     </div>
                                     <div class="col-md-6">
                                         <label for="village" class="form-label">Village or city</label>
-                                        <input type="text" class="form-control" id="village" name="village" placeholder="Berel" maxlength="40">
+                                        <input type="text" class="form-control" id="village" name="village" placeholder="Berel" maxlength="40" aria-describedby="err-village">
+                                        <p class="qy-error" id="err-village" role="alert" hidden></p>
                                     </div>
                                 </div>
                             </fieldset>
@@ -237,12 +286,12 @@
                                     <div class="col-12">
                                         <p class="form-label mb-2">Choose one</p>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="topic" id="topic-bird" value="bird" checked>
-                                            <label class="form-check-label" for="topic-bird">I found an injured bird</label>
+                                            <input class="form-check-input" type="radio" name="topic" id="topic-adopt" value="adopt" checked>
+                                            <label class="form-check-label" for="topic-adopt">I want to support the bird I chose above</label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="topic" id="topic-adopt" value="adopt">
-                                            <label class="form-check-label" for="topic-adopt">I want to adopt a resident</label>
+                                            <input class="form-check-input" type="radio" name="topic" id="topic-bird" value="bird">
+                                            <label class="form-check-label" for="topic-bird">I found an injured bird</label>
                                         </div>
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="topic" id="topic-volunteer" value="volunteer">
@@ -254,27 +303,28 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <label for="when" class="form-label">Date</label>
-                                        <input type="date" class="form-control" id="when" name="when" min="2026-01-01" max="2027-12-31">
+                                        <label for="when" class="form-label">Start on</label>
+                                        <input type="date" class="form-control" id="when" name="when" min="2026-11-10" max="2027-12-31" aria-describedby="err-when">
+                                        <p class="qy-error" id="err-when" role="alert" hidden></p>
                                     </div>
                                     <div class="col-md-6">
-                                        <label for="people" class="form-label">How many people</label>
-                                        <input type="number" class="form-control" id="people" name="people" min="1" max="40" placeholder="1">
-                                    </div>
-                                    <div class="col-12">
-                                        <label for="bird" class="form-label">Which bird or programme</label>
-                                        <select class="form-select" id="bird" name="bird">
-                                            <option value="any">Does not matter / not relevant</option>
-                                            <option value="tuman">Tuman, eagle owl</option>
-                                            <option value="aqtas">Aqtas, golden eagle</option>
-                                            <option value="tour">Guided tour</option>
-                                            <option value="school">School programme</option>
-                                            <option value="photo">Photography morning</option>
+                                        <label for="hear" class="form-label">How you heard about us</label>
+                                        <select class="form-select" id="hear" name="hear" aria-describedby="err-hear">
+                                            <option value="">Choose one</option>
+                                            <option value="tour">I was on a tour</option>
+                                            <option value="school">Through a school or a university</option>
+                                            <option value="instagram">Instagram or YouTube</option>
+                                            <option value="ranger">From a ranger or a vet</option>
+                                            <option value="festival">At the Altai Eagle Festival</option>
+                                            <option value="other">Somewhere else</option>
                                         </select>
+                                        <p class="qy-error" id="err-hear" role="alert" hidden></p>
                                     </div>
                                     <div class="col-12">
                                         <label for="message" class="form-label">Details</label>
-                                        <textarea class="form-control" id="message" name="message" rows="4" maxlength="600" placeholder="What does the bird look like, can it stand, is it bleeding, where exactly did you find it"></textarea>
+                                        <textarea class="form-control" id="message" name="message" rows="4" maxlength="600" aria-describedby="message-hint err-message"></textarea>
+                                        <p class="form-text" id="message-hint">Anything we should know. Optional.</p>
+                                        <p class="qy-error" id="err-message" role="alert" hidden></p>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-check">
@@ -282,15 +332,25 @@
                                             <label class="form-check-label" for="photos">I can send photos on WhatsApp</label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="agree" name="agree" required>
+                                            <input class="form-check-input" type="checkbox" id="agree" name="agree" aria-describedby="err-agree">
                                             <label class="form-check-label" for="agree">The centre may call me back on this number</label>
                                         </div>
+                                        <p class="qy-error" id="err-agree" role="alert" hidden></p>
                                     </div>
                                 </div>
                             </fieldset>
 
                             <button type="submit" class="btn qy-btn qy-btn--solid">Send to the centre</button>
                         </form>
+
+                        <div class="qy-done" id="pledge-done" hidden>
+                            <p class="qy-done__tag">Sent</p>
+                            <h3 class="qy-done__title" id="pledge-done-title">Thank you.</h3>
+                            <p class="qy-done__text">Nothing is charged on this page &mdash; it is a student project without a backend. In the real centre the duty vet reads the table every evening and calls back within a day.</p>
+                            <dl class="adopt__lines" id="pledge-done-lines"></dl>
+                            <button type="button" class="btn qy-btn qy-btn--ghost" id="pledge-again">Send another one</button>
+                        </div>
+                    </div>
                     </div>
                 </div>
             </div>
@@ -361,10 +421,15 @@
                     </ul>
                 </div>
             </div>
-            <p class="qy-bottom mb-0">Student project by Akhmad Zhagiparov, IT-2510, Astana IT University, 2026. Photos from Wikimedia Commons: Giles Laurent, Fimb, Ezra Sheyner, Quartl, Alexis Lours, AngMoKio, Rhododendrites, Richard Bartz, USFWS, Altaihunters, Rayrayokocha, SlipKOT86, Martin Dawes (CC BY, CC BY-SA, public domain). Built with Bootstrap 5.3 and the fonts Fraunces and Karla.</p>
+            <p class="qy-bottom mb-0">Student project by Akhmad Zhagiparov, IT-2510, Astana IT University, 2026. Photos from Wikimedia Commons: Giles Laurent, Fimb, Ezra Sheyner, Quartl, Alexis Lours, AngMoKio, Rhododendrites, Richard Bartz, USFWS, Altaihunters, Rayrayokocha, SlipKOT86, Martin Dawes (CC BY, CC BY-SA, public domain). Built with Bootstrap 5.3, jQuery 3.7.1 and the fonts Fraunces and Karla, all from public CDNs. AI assistance: Claude (Anthropic) was used while writing and reviewing the JavaScript and for proofreading the English. Everything else — the topic, the content, the design and the data — is my own.</p>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.7.1.min.js"><\/script>');</script>
+    <script src="js/data.js"></script>
+    <script src="js/support.js"></script>
+    <script src="js/effects.js"></script>
 </body>
 </html>
