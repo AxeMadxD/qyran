@@ -3060,3 +3060,13 @@ html {
         top: 6rem;
     }
 }
+
+.qy-aside--wide .qy-facts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(13.5rem, 1fr));
+    gap: 0.9rem 1.75rem;
+}
+
+.qy-aside--wide .qy-facts dd {
+    margin-bottom: 0;
+}
