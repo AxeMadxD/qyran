@@ -6,11 +6,13 @@
     --paper: #fffdf8;
     --amber: #d98a24;
     --amber-soft: #f3c378;
+    --amber-ink: #8a5a10;
     --pine: #22382e;
-    --stone: #6d7370;
+    --stone: #5a605d;
     --line: #d9d2c1;
     --ok: #3f7a4f;
     --crit: #b3402f;
+    --crit-ink: #96321f;
 
     --font-display: "Fraunces", Georgia, "Times New Roman", serif;
     --font-body: "Karla", "Segoe UI", Arial, sans-serif;
@@ -79,7 +81,7 @@ img {
     font-weight: 700;
     letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: var(--amber);
+    color: var(--amber-ink);
 }
 
 .qy-eyebrow::before {
@@ -303,7 +305,7 @@ img {
     font-size: 2.6rem;
     font-weight: 800;
     font-variant-numeric: tabular-nums;
-    color: var(--amber);
+    color: var(--amber-ink);
     margin-bottom: 0.2rem;
 }
 
@@ -334,7 +336,7 @@ img {
     font-weight: 700;
     letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: var(--amber);
+    color: var(--amber-ink);
 }
 
 .work__title {
@@ -421,7 +423,7 @@ img {
     font-weight: 700;
     letter-spacing: 0.04em;
     text-transform: uppercase;
-    color: var(--amber);
+    color: var(--amber-ink);
 }
 
 @media (min-width: 48em) {
@@ -799,7 +801,7 @@ img {
 }
 
 .qy-aside--light .qy-facts dt {
-    color: var(--amber);
+    color: var(--amber-ink);
 }
 
 .qy-aside--light .qy-facts dd {
@@ -919,7 +921,7 @@ img {
 
 .qy-plan ul li::before {
     content: "\2713";
-    color: var(--amber);
+    color: var(--amber-ink);
     font-weight: 700;
 }
 
@@ -932,7 +934,7 @@ img {
     font-family: var(--font-display);
     font-size: 1.9rem;
     font-weight: 800;
-    color: var(--amber);
+    color: var(--amber-ink);
     margin-bottom: 0.6rem;
 }
 
@@ -1196,7 +1198,7 @@ html {
     font-size: 1.2rem;
     font-weight: 800;
     font-style: italic;
-    color: var(--amber);
+    color: var(--amber-ink);
 }
 
 .bird-card {
@@ -1248,7 +1250,7 @@ html {
     font-weight: 800;
     line-height: 1;
     font-variant-numeric: tabular-nums;
-    color: var(--amber);
+    color: var(--amber-ink);
 }
 
 .bird-card--hidden .bird-card__span {
@@ -1409,7 +1411,7 @@ html {
     font-size: 2rem;
     font-weight: 800;
     line-height: 1;
-    color: var(--amber);
+    color: var(--amber-ink);
 }
 
 .board-summary__text {
@@ -1550,7 +1552,7 @@ html {
     font-weight: 700;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: var(--crit);
+    color: var(--crit-ink);
 }
 
 .lane__list {
@@ -1796,7 +1798,7 @@ html {
     margin: 0.35rem 0 0;
     font-size: 0.88rem;
     font-weight: 700;
-    color: var(--crit);
+    color: var(--crit-ink);
 }
 
 .qy-error:empty {
@@ -1884,7 +1886,7 @@ html {
 }
 
 .qy-type--soldout .qy-type__left {
-    color: var(--crit);
+    color: var(--crit-ink);
 }
 
 .qy-summary {
@@ -1904,7 +1906,7 @@ html {
 .qy-summary__title {
     margin-bottom: 0.5rem;
     font-size: 1.2rem;
-    color: var(--crit);
+    color: var(--crit-ink);
 }
 
 .qy-summary__list {
@@ -2011,7 +2013,7 @@ html {
 
 .ticket .ticket__empty {
     font-style: italic;
-    color: #6f777b;
+    color: #9aa3a7;
 }
 
 .ticket .ticket__total {
@@ -2030,7 +2032,7 @@ html {
     font-family: var(--font-body);
     font-size: 1rem;
     font-weight: 400;
-    color: #6f777b;
+    color: #9aa3a7;
 }
 
 .ticket__code-label {
