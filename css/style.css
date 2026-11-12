@@ -974,9 +974,16 @@ img {
     border: 1px solid var(--rule);
     border-radius: var(--radius);
     padding: 0.7rem 0.9rem;
+    color: var(--text);
+}
+
+.qy-form .form-control::placeholder {
+    color: var(--text-soft);
+    opacity: 1;
 }
 
 .qy-form .form-control:focus,
+.qy-form .form-control:focus-within,
 .qy-form .form-select:focus {
     border-color: var(--accent);
     box-shadow: 0 0 0 0.2rem var(--ring-accent);
@@ -3325,24 +3332,6 @@ html {
     border-color: var(--rule);
     background-color: var(--surface-2);
     color: var(--text-soft);
-}
-
-.qy-form .form-control,
-.qy-form .form-select {
-    background-color: var(--surface);
-    border-color: var(--rule);
-    color: var(--text);
-}
-
-.qy-form .form-control::placeholder {
-    color: var(--text-soft);
-    opacity: 1;
-}
-
-.qy-form .form-control:focus,
-.qy-form .form-select:focus {
-    border-color: var(--accent);
-    box-shadow: 0 0 0 0.2rem var(--ring-accent);
 }
 
 .qy-form__actions {
