@@ -79,6 +79,29 @@ function silhouette(bird) {
     return box;
 }
 
+function bookmark() {
+    const ns = "http://www.w3.org/2000/svg";
+    const svg = document.createElementNS(ns, "svg");
+    svg.setAttribute("viewBox", "0 0 24 24");
+    svg.setAttribute("aria-hidden", "true");
+    svg.setAttribute("focusable", "false");
+    const path = document.createElementNS(ns, "path");
+    path.setAttribute("d", "M6.5 3.5h11v17l-5.5-3.8-5.5 3.8z");
+    svg.appendChild(path);
+    return svg;
+}
+
+function followButton(bird) {
+    const on = qyFollowing(bird.id);
+    const button = node("button", "qy-follow" + (on ? " is-on" : ""));
+    button.type = "button";
+    button.setAttribute("data-follow", bird.id);
+    button.setAttribute("aria-pressed", on ? "true" : "false");
+    button.appendChild(bookmark());
+    button.appendChild(node("span", "qy-follow__text", on ? "Following" : "Follow"));
+    return button;
+}
+
 function fact(name, value) {
     const row = node("div", "patient-card__fact");
     row.appendChild(node("dt", null, name));
@@ -132,9 +155,12 @@ function buildCard(bird) {
 
     body.appendChild(node("p", "patient-card__note", bird.note));
 
+    const actions = node("div", "patient-card__actions");
     const link = node("a", "qy-btn qy-btn--ghost patient-card__link", "Support " + bird.name + " →");
     link.href = "support.html?bird=" + bird.id + "#adopt";
-    body.appendChild(link);
+    actions.appendChild(link);
+    actions.appendChild(followButton(bird));
+    body.appendChild(actions);
 
     card.appendChild(body);
     return card;
@@ -238,9 +264,6 @@ function render() {
         button.classList.toggle("is-active", on);
         button.setAttribute("aria-pressed", on ? "true" : "false");
     });
-    if (window.jQuery) {
-        jQuery(document).trigger("qyran:rendered");
-    }
 }
 
 function fillSpecies() {
