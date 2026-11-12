@@ -85,6 +85,32 @@
     const back = $("<div>", { class: "qy-light__back" }).appendTo(layer);
     let openShot = null;
     let openFigure = null;
+    let resting = false;
+
+    function lockPage() {
+        const gap = window.innerWidth - document.documentElement.clientWidth;
+        document.documentElement.classList.add("qy-locked");
+        if (gap > 0) {
+            document.documentElement.style.paddingRight = gap + "px";
+        }
+    }
+
+    function unlockPage() {
+        document.documentElement.classList.remove("qy-locked");
+        document.documentElement.style.paddingRight = "";
+    }
+
+    function middle(image) {
+        const width = Math.min($(window).width() - 48, 880);
+        const ratio = (image.get(0).naturalHeight || 3) / (image.get(0).naturalWidth || 4);
+        const height = Math.min(Math.round(width * ratio), $(window).height() - 140);
+        return {
+            width: width,
+            height: height,
+            left: Math.round(($(window).width() - width) / 2),
+            top: Math.round(Math.max(24, ($(window).height() - height - 60) / 2))
+        };
+    }
 
     function closeShot() {
         if (!openShot) {
@@ -94,12 +120,22 @@
         const figure = openFigure;
         openShot = null;
         openFigure = null;
+        resting = false;
         const image = figure ? figure.find("img").first() : null;
         back.stop(true, true).fadeOut(FADE);
+        if (shot.css("position") === "fixed") {
+            const now = shot.position();
+            shot.css({
+                position: "absolute",
+                left: now.left + $(window).scrollLeft(),
+                top: now.top + $(window).scrollTop()
+            });
+        }
         if (!image || !image.length || !image.is(":visible")) {
             shot.stop(true, true).fadeOut(FADE, function () {
                 $(this).remove();
                 layer.hide().attr("aria-hidden", "true");
+                unlockPage();
             });
             return;
         }
@@ -113,6 +149,7 @@
         }, 320, function () {
             $(this).remove();
             layer.hide().attr("aria-hidden", "true");
+            unlockPage();
         });
     }
 
@@ -141,15 +178,19 @@
         layer.show().attr("aria-hidden", "false").css({ height: $(document).height() });
         shot.appendTo(layer);
 
-        const maxWidth = Math.min($(window).width() - 48, 880);
-        const ratio = (image.get(0).naturalHeight || 3) / (image.get(0).naturalWidth || 4);
-        const width = maxWidth;
-        const height = Math.min(Math.round(width * ratio), $(window).height() - 140);
-        const left = $(window).scrollLeft() + ($(window).width() - width) / 2;
-        const shotTop = $(window).scrollTop() + Math.max(24, ($(window).height() - height - 60) / 2);
+        const spot = middle(image);
+        lockPage();
 
-        back.stop(true, true).css({ height: $(document).height() }).fadeIn(FADE);
-        shot.stop(true, true).animate({ left: left, top: shotTop, width: width, height: height }, 380, function () {
+        back.stop(true, true).fadeIn(FADE);
+        shot.stop(true, true).animate({
+            left: spot.left + $(window).scrollLeft(),
+            top: spot.top + $(window).scrollTop(),
+            width: spot.width,
+            height: spot.height
+        }, 380, function () {
+            const fresh = middle(image);
+            shot.css({ position: "fixed", left: fresh.left, top: fresh.top, width: fresh.width, height: fresh.height });
+            resting = true;
             shot.find(".qy-light__close").trigger("focus");
         });
 
@@ -167,6 +208,18 @@
         if (event.key === "Escape") {
             closeShot();
         }
+    });
+
+    $(window).on("resize", function () {
+        if (!openShot || !resting || !openFigure) {
+            return;
+        }
+        const image = openFigure.find("img").first();
+        if (!image.length) {
+            return;
+        }
+        const spot = middle(image);
+        openShot.stop(true, true).css({ left: spot.left, top: spot.top, width: spot.width, height: spot.height });
     });
 
     $(document).on("click", ".qy-acc__head", function () {
