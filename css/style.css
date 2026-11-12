@@ -14,17 +14,114 @@
     --crit: #b3402f;
     --crit-ink: #96321f;
 
+    --page: var(--bone);
+    --band: var(--bone-2);
+    --surface: var(--paper);
+    --surface-2: var(--bone-2);
+    --inverse: var(--night);
+    --inverse-2: var(--night-2);
+
+    --text: var(--night);
+    --text-soft: var(--stone);
+    --on-inverse: var(--bone);
+    --on-inverse-soft: #c9cfd1;
+    --on-inverse-dim: #a7aeb0;
+    --on-bright: var(--night);
+    --on-color: #ffffff;
+
+    --rule: var(--line);
+    --rule-inverse: #2b3238;
+    --rule-inverse-soft: #4a5257;
+    --track-inverse: #343b42;
+    --chip-neutral: var(--stone);
+
+    --accent: var(--amber);
+    --accent-soft: var(--amber-soft);
+    --accent-text: var(--amber-ink);
+    --accent-tint: rgba(217, 138, 36, 0.12);
+    --accent-tint-solid: #fdf6ea;
+
+    --ok-text: #2f6b41;
+    --ok-on-inverse: #9fd3a9;
+    --ok-tint: rgba(63, 122, 79, 0.12);
+    --crit-text: var(--crit-ink);
+    --crit-text-strong: #7d2a1f;
+    --crit-on-inverse: #f0a497;
+    --crit-tint: #fbefec;
+    --crit-tint-soft: rgba(179, 64, 47, 0.1);
+    --crit-edge: rgba(179, 64, 47, 0.35);
+    --toast-warn: #f6d9d2;
+    --page-glow: #fbf8f0;
+    --pine-soft: #3f6b54;
+    --veil: rgba(18, 22, 28, 0.86);
+    --veil-2: rgba(18, 22, 28, 0.9);
+
+    --overlay: rgba(18, 22, 28, 0.8);
+    --overlay-2: rgba(18, 22, 28, 0.85);
+    --shadow: rgba(18, 22, 28, 0.14);
+    --shadow-soft: rgba(18, 22, 28, 0.1);
+    --shadow-strong: rgba(18, 22, 28, 0.25);
+    --shadow-accent: rgba(217, 138, 36, 0.35);
+    --shadow-ok: rgba(63, 122, 79, 0.4);
+    --ring-accent: rgba(217, 138, 36, 0.3);
+    --ring-ok: rgba(63, 122, 79, 0.3);
+    --ring-crit: rgba(179, 64, 47, 0.25);
+
     --font-display: "Fraunces", Georgia, "Times New Roman", serif;
     --font-body: "Karla", "Segoe UI", Arial, sans-serif;
 
     --radius: 3px;
     --shell: min(100% - 2.5rem, 71.25rem);
+
+    color-scheme: light;
+}
+
+[data-theme="dark"] {
+    --page: #10151b;
+    --band: #161d24;
+    --surface: #1b232b;
+    --surface-2: #242e37;
+    --inverse: #1e2832;
+    --inverse-2: #151d24;
+
+    --text: #ece7da;
+    --text-soft: #a7b1ac;
+    --on-inverse: #f1ece0;
+    --on-inverse-soft: #c4cec9;
+    --on-inverse-dim: #a3ada8;
+
+    --rule: #2f3943;
+    --rule-inverse: #3a444f;
+    --rule-inverse-soft: #4e5962;
+    --track-inverse: #39444e;
+    --chip-neutral: #5a6460;
+
+    --accent-text: #eab45c;
+    --accent-tint: rgba(217, 138, 36, 0.18);
+    --accent-tint-solid: rgba(217, 138, 36, 0.14);
+
+    --pine: #2d4a3c;
+    --ok-text: #86c79a;
+    --ok-tint: rgba(63, 122, 79, 0.22);
+    --crit-text: #ec9480;
+    --crit-text-strong: #f0a497;
+    --crit-tint: rgba(179, 64, 47, 0.2);
+    --crit-tint-soft: rgba(179, 64, 47, 0.16);
+    --crit-edge: rgba(179, 64, 47, 0.45);
+    --page-glow: #171f27;
+    --pine-soft: #4a7d62;
+
+    --shadow: rgba(0, 0, 0, 0.55);
+    --shadow-soft: rgba(0, 0, 0, 0.4);
+    --shadow-strong: rgba(0, 0, 0, 0.7);
+
+    color-scheme: dark;
 }
 
 body {
     font-family: var(--font-body);
-    color: var(--night);
-    background-color: var(--bone);
+    color: var(--text);
+    background-color: var(--page);
     line-height: 1.65;
 }
 
@@ -48,15 +145,15 @@ img {
     left: 0.5rem;
     z-index: 2000;
     padding: 0.5rem 1rem;
-    background-color: var(--amber);
-    color: var(--night);
+    background-color: var(--accent);
+    color: var(--on-bright);
 }
 
 .qy-mark {
     width: 1.75rem;
     height: 1.75rem;
     fill: none;
-    stroke: var(--amber);
+    stroke: var(--accent);
     stroke-width: 2;
     stroke-linecap: round;
     stroke-linejoin: round;
@@ -81,22 +178,22 @@ img {
     font-weight: 700;
     letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: var(--amber-ink);
+    color: var(--accent-text);
 }
 
 .qy-eyebrow::before {
     content: "";
     width: 2.25rem;
     height: 2px;
-    background-color: var(--amber);
+    background-color: var(--accent);
 }
 
 .qy-eyebrow--light {
-    color: var(--amber-soft);
+    color: var(--accent-soft);
 }
 
 .qy-eyebrow--light::before {
-    background-color: var(--amber-soft);
+    background-color: var(--accent-soft);
 }
 
 .qy-display {
@@ -119,21 +216,21 @@ img {
 
 .qy-h2--light,
 .qy-h3--light {
-    color: var(--bone);
+    color: var(--on-inverse);
 }
 
 .qy-lead {
     max-width: 42ch;
     font-size: 1.1rem;
-    color: #3b423f;
+    color: var(--text);
 }
 
 .qy-muted {
-    color: var(--stone);
+    color: var(--text-soft);
 }
 
 .qy-muted--light {
-    color: #a7aeb0;
+    color: var(--on-inverse-dim);
 }
 
 .qy-section {
@@ -141,42 +238,42 @@ img {
 }
 
 .qy-section--bone {
-    background-color: var(--bone-2);
+    background-color: var(--band);
 }
 
 .qy-section--paper {
-    background-color: var(--paper);
+    background-color: var(--surface);
 }
 
 .qy-section--dark {
-    background-color: var(--night);
-    color: var(--bone);
+    background-color: var(--inverse);
+    color: var(--on-inverse);
 }
 
 .qy-nav {
-    background-color: var(--night);
+    background-color: var(--inverse);
     padding-block: 0.85rem;
-    border-bottom: 1px solid #2b3238;
+    border-bottom: 1px solid var(--rule-inverse);
 }
 
 .qy-nav .navbar-brand {
-    color: var(--bone);
+    color: var(--on-inverse);
 }
 
 .qy-nav .nav-link {
-    color: #c9cfd1;
+    color: var(--on-inverse-soft);
     font-weight: 500;
     padding-inline: 0.9rem;
 }
 
 .qy-nav .nav-link:hover,
 .qy-nav .nav-link:focus {
-    color: var(--amber);
+    color: var(--accent);
 }
 
 .qy-nav .nav-link.active {
-    color: var(--amber);
-    box-shadow: inset 0 -2px 0 var(--amber);
+    color: var(--accent);
+    box-shadow: inset 0 -2px 0 var(--accent);
 }
 
 .qy-btn {
@@ -189,56 +286,56 @@ img {
 }
 
 .qy-btn--solid {
-    background-color: var(--amber);
-    border-color: var(--amber);
-    color: var(--night);
+    background-color: var(--accent);
+    border-color: var(--accent);
+    color: var(--on-bright);
 }
 
 .qy-btn--solid:hover,
 .qy-btn--solid:focus-visible {
-    background-color: var(--night);
-    border-color: var(--night);
-    color: var(--bone);
+    background-color: var(--inverse);
+    border-color: var(--text);
+    color: var(--on-inverse);
 }
 
 .qy-btn--ghost {
-    border-color: var(--night);
-    color: var(--night);
+    border-color: var(--text);
+    color: var(--text);
 }
 
 .qy-btn--ghost:hover,
 .qy-btn--ghost:focus-visible {
-    background-color: var(--night);
-    color: var(--bone);
+    background-color: var(--inverse);
+    color: var(--on-inverse);
 }
 
 .qy-btn--light {
-    border-color: var(--bone);
-    color: var(--bone);
+    border-color: var(--on-inverse);
+    color: var(--on-inverse);
 }
 
 .qy-btn--light:hover,
 .qy-btn--light:focus-visible {
-    background-color: var(--bone);
-    color: var(--night);
+    background-color: var(--on-inverse);
+    color: var(--on-bright);
 }
 
 .qy-btn--line {
-    border-color: #4a5257;
-    color: var(--bone);
+    border-color: var(--rule-inverse-soft);
+    color: var(--on-inverse);
     padding: 0.5rem 1.1rem;
     font-size: 0.9rem;
 }
 
 .qy-btn--line:hover,
 .qy-btn--line:focus-visible {
-    border-color: var(--amber);
-    color: var(--amber);
+    border-color: var(--accent);
+    color: var(--accent);
 }
 
 .qy-hero {
     padding-block: 3rem 3.5rem;
-    background-image: radial-gradient(circle at 15% 15%, #fbf8f0, var(--bone) 60%);
+    background-image: radial-gradient(circle at 15% 15%, var(--page-glow), var(--page) 60%);
 }
 
 .qy-frame {
@@ -248,35 +345,35 @@ img {
 .qy-frame img {
     width: 100%;
     border-radius: var(--radius);
-    box-shadow: 1rem 1rem 0 rgba(217, 138, 36, 0.35);
+    box-shadow: 1rem 1rem 0 var(--shadow-accent);
 }
 
 .qy-frame figcaption {
     margin-top: 1.4rem;
     font-size: 0.9rem;
-    color: var(--stone);
-    border-left: 2px solid var(--amber);
+    color: var(--text-soft);
+    border-left: 2px solid var(--accent);
     padding-left: 0.9rem;
 }
 
 .qy-pagehead {
     padding-block: 3rem;
-    background-color: var(--night);
+    background-color: var(--inverse);
     background-size: cover;
     background-position: center;
-    color: var(--bone);
+    color: var(--on-inverse);
 }
 
 .qy-pagehead--birds {
-    background-image: linear-gradient(rgba(18, 22, 28, 0.86), rgba(18, 22, 28, 0.9)), url("../images/steppe-eagle.jpg");
+    background-image: linear-gradient(var(--veil), var(--veil-2)), url("../images/steppe-eagle.jpg");
 }
 
 .qy-pagehead--visit {
-    background-image: linear-gradient(rgba(18, 22, 28, 0.86), rgba(18, 22, 28, 0.9)), url("../images/altai.jpg");
+    background-image: linear-gradient(var(--veil), var(--veil-2)), url("../images/altai.jpg");
 }
 
 .qy-pagehead--support {
-    background-image: linear-gradient(rgba(18, 22, 28, 0.86), rgba(18, 22, 28, 0.9)), url("../images/park.jpg");
+    background-image: linear-gradient(var(--veil), var(--veil-2)), url("../images/park.jpg");
 }
 
 .qy-pagehead .qy-display {
@@ -286,17 +383,17 @@ img {
 
 .qy-crumb {
     font-size: 0.85rem;
-    color: #a7aeb0;
+    color: var(--on-inverse-dim);
     margin-bottom: 0.9rem;
 }
 
 .qy-crumb a {
-    color: var(--amber-soft);
+    color: var(--accent-soft);
 }
 
 .qy-stats {
-    background-color: var(--night);
-    color: var(--bone);
+    background-color: var(--inverse);
+    color: var(--on-inverse);
     padding-block: 2.5rem;
 }
 
@@ -305,19 +402,19 @@ img {
     font-size: 2.6rem;
     font-weight: 800;
     font-variant-numeric: tabular-nums;
-    color: var(--amber-ink);
+    color: var(--accent-text);
     margin-bottom: 0.2rem;
 }
 
 .qy-stat-label {
     font-size: 0.9rem;
-    color: #a7aeb0;
+    color: var(--on-inverse-dim);
     margin-bottom: 0;
 }
 
 .work {
     padding-block: 3rem;
-    background-color: var(--bone);
+    background-color: var(--page);
 }
 
 .work__shell {
@@ -336,7 +433,7 @@ img {
     font-weight: 700;
     letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: var(--amber-ink);
+    color: var(--accent-text);
 }
 
 .work__title {
@@ -345,7 +442,7 @@ img {
 }
 
 .work__lead {
-    color: var(--stone);
+    color: var(--text-soft);
     margin-bottom: 0;
 }
 
@@ -361,8 +458,8 @@ img {
 .step {
     display: grid;
     grid-template-rows: auto 1fr;
-    background-color: var(--paper);
-    border: 1px solid var(--line);
+    background-color: var(--surface);
+    border: 1px solid var(--rule);
     border-radius: var(--radius);
     overflow: hidden;
 }
@@ -394,8 +491,8 @@ img {
     padding: 0.15rem 0.7rem;
     font-family: var(--font-display);
     font-weight: 800;
-    color: var(--night);
-    background-color: var(--amber);
+    color: var(--on-bright);
+    background-color: var(--accent);
     border-radius: var(--radius);
 }
 
@@ -418,12 +515,12 @@ img {
     margin-top: auto;
     margin-bottom: 0;
     padding-top: 0.8rem;
-    border-top: 1px solid var(--line);
+    border-top: 1px solid var(--rule);
     font-size: 0.85rem;
     font-weight: 700;
     letter-spacing: 0.04em;
     text-transform: uppercase;
-    color: var(--amber-ink);
+    color: var(--accent-text);
 }
 
 @media (min-width: 48em) {
@@ -434,7 +531,7 @@ img {
     .work__head {
         text-align: left;
         margin-bottom: 2.75rem;
-        border-left: 3px solid var(--amber);
+        border-left: 3px solid var(--accent);
         padding-left: 1.25rem;
     }
 
@@ -508,9 +605,9 @@ img {
 }
 
 .qy-card {
-    border: 1px solid var(--line);
+    border: 1px solid var(--rule);
     border-radius: var(--radius);
-    background-color: var(--paper);
+    background-color: var(--surface);
     overflow: hidden;
     transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
@@ -525,7 +622,7 @@ img {
 .qy-card:hover,
 .qy-card:focus-within {
     transform: translateY(-6px);
-    box-shadow: 0 1.1rem 1.6rem rgba(18, 22, 28, 0.14);
+    box-shadow: 0 1.1rem 1.6rem var(--shadow);
 }
 
 .qy-card:hover .card-img-top {
@@ -539,15 +636,15 @@ img {
 
 .qy-species {
     font-size: 0.9rem;
-    color: var(--stone);
+    color: var(--text-soft);
     margin-bottom: 0.7rem;
 }
 
 .qy-card-footer {
     background-color: transparent;
-    border-top: 1px solid var(--line);
+    border-top: 1px solid var(--rule);
     font-size: 0.85rem;
-    color: var(--stone);
+    color: var(--text-soft);
 }
 
 .qy-chip {
@@ -558,13 +655,13 @@ img {
     letter-spacing: 0.1em;
     text-transform: uppercase;
     border-radius: 999px;
-    color: #fff;
+    color: var(--on-color);
     white-space: nowrap;
 }
 
 .qy-chip--care {
-    background-color: var(--amber);
-    color: var(--night);
+    background-color: var(--accent);
+    color: var(--on-bright);
 }
 
 .qy-chip--ready {
@@ -581,8 +678,8 @@ img {
 
 .qy-table {
     --bs-table-bg: transparent;
-    --bs-table-color: var(--night);
-    border-color: var(--line);
+    --bs-table-color: var(--text);
+    border-color: var(--rule);
     margin-bottom: 0;
 }
 
@@ -591,48 +688,48 @@ img {
     padding-bottom: 0.9rem;
     font-family: var(--font-display);
     font-size: 1.15rem;
-    color: var(--night);
+    color: var(--text);
 }
 
 .qy-table thead th {
-    background-color: var(--night);
-    color: var(--bone);
+    background-color: var(--inverse);
+    color: var(--on-inverse);
     font-size: 0.78rem;
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     vertical-align: middle;
-    border-color: var(--night);
+    border-color: var(--text);
 }
 
 .qy-table tbody th,
 .qy-table tbody td {
     vertical-align: middle;
-    border-color: var(--line);
+    border-color: var(--rule);
 }
 
 .qy-table tbody tr:nth-child(odd) {
-    background-color: var(--paper);
+    background-color: var(--surface);
 }
 
 .qy-table tbody tr:hover {
-    background-color: rgba(217, 138, 36, 0.12);
+    background-color: var(--accent-tint);
 }
 
 .qy-table tfoot td {
-    background-color: var(--bone-2);
+    background-color: var(--surface-2);
     font-size: 0.88rem;
-    color: var(--stone);
-    border-color: var(--line);
+    color: var(--text-soft);
+    border-color: var(--rule);
 }
 
 .qy-table--total tfoot th,
 .qy-table--total tfoot td {
-    background-color: var(--night);
-    color: var(--bone);
+    background-color: var(--inverse);
+    color: var(--on-inverse);
     font-size: 1rem;
     font-weight: 700;
-    border-color: var(--night);
+    border-color: var(--text);
 }
 
 .qy-table__name {
@@ -653,7 +750,7 @@ img {
     grid-template-columns: 1fr auto;
     gap: 0.2rem 1rem;
     padding-block: 0.7rem;
-    border-bottom: 1px solid var(--line);
+    border-bottom: 1px solid var(--rule);
 }
 
 .wing__name {
@@ -662,7 +759,7 @@ img {
 
 .wing__name span {
     font-weight: 400;
-    color: var(--stone);
+    color: var(--text-soft);
 }
 
 .wing dd {
@@ -680,7 +777,7 @@ img {
     grid-column: 1 / -1;
     align-self: center;
     height: 0.8rem;
-    background-color: var(--line);
+    background-color: var(--rule);
     border-radius: 999px;
     overflow: hidden;
 }
@@ -689,12 +786,12 @@ img {
     display: block;
     height: 100%;
     width: calc(var(--span) / 2.4 * 100%);
-    background-image: linear-gradient(90deg, var(--amber), var(--amber-soft));
+    background-image: linear-gradient(90deg, var(--accent), var(--accent-soft));
     border-radius: 999px;
 }
 
 .wing__row--own .wing__fill {
-    background-image: linear-gradient(90deg, var(--pine), #3f6b54);
+    background-image: linear-gradient(90deg, var(--pine), var(--pine-soft));
 }
 
 @media (min-width: 40em) {
@@ -760,17 +857,17 @@ img {
 
 .qy-aside {
     padding: 1.75rem;
-    background-color: var(--night);
-    color: var(--bone);
+    background-color: var(--inverse);
+    color: var(--on-inverse);
     border-radius: var(--radius);
-    border-top: 4px solid var(--amber);
+    border-top: 4px solid var(--accent);
 }
 
 .qy-aside--light {
-    background-color: var(--paper);
-    color: var(--night);
-    border: 1px solid var(--line);
-    border-top: 4px solid var(--amber);
+    background-color: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--rule);
+    border-top: 4px solid var(--accent);
 }
 
 .qy-aside__title {
@@ -787,13 +884,13 @@ img {
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--amber-soft);
+    color: var(--accent-soft);
 }
 
 .qy-facts dd {
     margin-bottom: 1rem;
     font-size: 0.95rem;
-    color: #d6d9d6;
+    color: var(--on-inverse-soft);
 }
 
 .qy-facts dd:last-child {
@@ -801,21 +898,21 @@ img {
 }
 
 .qy-aside--light .qy-facts dt {
-    color: var(--amber-ink);
+    color: var(--accent-text);
 }
 
 .qy-aside--light .qy-facts dd {
-    color: var(--night);
+    color: var(--text);
 }
 
 .qy-accordion {
     --bs-accordion-bg: transparent;
-    --bs-accordion-border-color: var(--line);
+    --bs-accordion-border-color: var(--rule);
     --bs-accordion-border-radius: var(--radius);
-    --bs-accordion-btn-color: var(--night);
-    --bs-accordion-active-color: var(--night);
-    --bs-accordion-active-bg: rgba(217, 138, 36, 0.14);
-    --bs-accordion-btn-focus-box-shadow: 0 0 0 0.2rem rgba(217, 138, 36, 0.35);
+    --bs-accordion-btn-color: var(--text);
+    --bs-accordion-active-color: var(--text);
+    --bs-accordion-active-bg: var(--accent-tint);
+    --bs-accordion-btn-focus-box-shadow: 0 0 0 0.2rem var(--shadow-accent);
 }
 
 .qy-accordion .accordion-button {
@@ -850,8 +947,8 @@ img {
     place-items: center;
     font-family: var(--font-display);
     font-weight: 800;
-    color: var(--night);
-    background-color: var(--amber);
+    color: var(--on-bright);
+    background-color: var(--accent);
     border-radius: 50%;
 }
 
@@ -859,7 +956,7 @@ img {
     font-family: var(--font-display);
     font-size: 1.9rem;
     font-weight: 800;
-    color: var(--amber-ink);
+    color: var(--accent-text);
     margin-bottom: 0.6rem;
 }
 
@@ -868,34 +965,34 @@ img {
     font-weight: 700;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: var(--stone);
+    color: var(--text-soft);
 }
 
 .qy-form .form-control,
 .qy-form .form-select {
-    background-color: var(--paper);
-    border: 1px solid var(--line);
+    background-color: var(--surface);
+    border: 1px solid var(--rule);
     border-radius: var(--radius);
     padding: 0.7rem 0.9rem;
 }
 
 .qy-form .form-control:focus,
 .qy-form .form-select:focus {
-    border-color: var(--amber);
-    box-shadow: 0 0 0 0.2rem rgba(217, 138, 36, 0.3);
+    border-color: var(--accent);
+    box-shadow: 0 0 0 0.2rem var(--ring-accent);
 }
 
 .qy-form .form-check-input:checked {
-    background-color: var(--amber);
-    border-color: var(--amber);
+    background-color: var(--accent);
+    border-color: var(--accent);
 }
 
 .qy-form fieldset {
-    border: 1px solid var(--line);
+    border: 1px solid var(--rule);
     border-radius: var(--radius);
     padding: 1.25rem;
     margin-bottom: 1.5rem;
-    background-color: var(--paper);
+    background-color: var(--surface);
 }
 
 .qy-form legend {
@@ -910,9 +1007,9 @@ img {
 .qy-quote {
     margin: 0;
     padding: 1.5rem 1.75rem;
-    color: var(--night);
-    background-color: var(--paper);
-    border-left: 4px solid var(--amber);
+    color: var(--text);
+    background-color: var(--surface);
+    border-left: 4px solid var(--accent);
     border-radius: var(--radius);
     font-family: var(--font-display);
     font-size: 1.15rem;
@@ -922,18 +1019,18 @@ img {
     margin-top: 0.75rem;
     font-family: var(--font-body);
     font-size: 0.9rem;
-    color: var(--stone);
+    color: var(--text-soft);
 }
 
 .qy-footer {
-    background-color: var(--night-2);
-    color: var(--bone);
+    background-color: var(--inverse-2);
+    color: var(--on-inverse);
     padding-block: 2.75rem;
     font-size: 0.9rem;
 }
 
 .qy-footer a {
-    color: var(--amber-soft);
+    color: var(--accent-soft);
 }
 
 .qy-footer h3 {
@@ -941,7 +1038,7 @@ img {
     letter-spacing: 0.06em;
     text-transform: uppercase;
     font-family: var(--font-body);
-    color: var(--amber);
+    color: var(--accent);
     margin-bottom: 0.8rem;
 }
 
@@ -956,16 +1053,16 @@ img {
 }
 
 .qy-brand--footer {
-    color: var(--bone);
+    color: var(--on-inverse);
     margin-bottom: 0.6rem;
 }
 
 .qy-bottom {
     margin-top: 2rem;
     padding-top: 1.25rem;
-    border-top: 1px solid #343b42;
+    border-top: 1px solid var(--rule-inverse);
     font-size: 0.82rem;
-    color: #8f969a;
+    color: var(--on-inverse-dim);
 }
 
 @media (min-width: 48em) {
@@ -1005,19 +1102,19 @@ html {
 }
 
 .qy-pagehead--game {
-    background-image: linear-gradient(rgba(18, 22, 28, 0.86), rgba(18, 22, 28, 0.9)), url("../images/feathers.jpg");
+    background-image: linear-gradient(var(--veil), var(--veil-2)), url("../images/feathers.jpg");
 }
 
 .qy-pagehead--board {
-    background-image: linear-gradient(rgba(18, 22, 28, 0.86), rgba(18, 22, 28, 0.9)), url("../images/rehab.jpg");
+    background-image: linear-gradient(var(--veil), var(--veil-2)), url("../images/rehab.jpg");
 }
 
 .qy-pagehead--tickets {
-    background-image: linear-gradient(rgba(18, 22, 28, 0.86), rgba(18, 22, 28, 0.9)), url("../images/display.jpg");
+    background-image: linear-gradient(var(--veil), var(--veil-2)), url("../images/display.jpg");
 }
 
 .qy-btn:focus-visible {
-    outline: 3px solid var(--amber);
+    outline: 3px solid var(--accent);
     outline-offset: 2px;
     box-shadow: none;
 }
@@ -1030,22 +1127,22 @@ html {
 
 .qy-btn--solid[aria-disabled="true"]:hover,
 .qy-btn--solid[aria-disabled="true"]:focus-visible {
-    background-color: var(--amber);
-    border-color: var(--amber);
-    color: var(--night);
+    background-color: var(--accent);
+    border-color: var(--accent);
+    color: var(--on-bright);
 }
 
 .qy-btn--ghost[aria-disabled="true"]:hover,
 .qy-btn--ghost[aria-disabled="true"]:focus-visible {
     background-color: transparent;
-    color: var(--night);
+    color: var(--text);
 }
 
 .game {
     padding: 1.25rem;
-    background-color: var(--paper);
-    border: 1px solid var(--line);
-    border-top: 4px solid var(--amber);
+    background-color: var(--surface);
+    border: 1px solid var(--rule);
+    border-top: 4px solid var(--accent);
     border-radius: var(--radius);
     transition: border-color 0.3s ease;
 }
@@ -1063,7 +1160,7 @@ html {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1rem;
     padding-bottom: 1.25rem;
-    border-bottom: 1px solid var(--line);
+    border-bottom: 1px solid var(--rule);
 }
 
 .game__stat {
@@ -1077,7 +1174,7 @@ html {
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--stone);
+    color: var(--text-soft);
 }
 
 .game__num {
@@ -1098,15 +1195,15 @@ html {
 .life {
     width: 1.35rem;
     height: 1.35rem;
-    background-color: var(--amber);
-    border: 2px solid var(--amber);
+    background-color: var(--accent);
+    border: 2px solid var(--accent);
     border-radius: 0 100% 0 100%;
     transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
 }
 
 .life--lost {
     background-color: transparent;
-    border-color: var(--line);
+    border-color: var(--rule);
     transform: rotate(90deg) scale(0.8);
 }
 
@@ -1123,7 +1220,7 @@ html {
     font-size: 1.2rem;
     font-weight: 800;
     font-style: italic;
-    color: var(--amber-ink);
+    color: var(--accent-text);
 }
 
 .bird-card {
@@ -1132,9 +1229,9 @@ html {
     gap: 0.2rem;
     min-height: 11.5rem;
     padding: 1.4rem;
-    background-color: var(--night);
-    color: var(--bone);
-    border: 3px solid var(--night);
+    background-color: var(--inverse);
+    color: var(--on-inverse);
+    border: 3px solid var(--text);
     border-radius: var(--radius);
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
@@ -1150,7 +1247,7 @@ html {
     font-weight: 700;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--amber-soft);
+    color: var(--accent-soft);
 }
 
 .bird-card__name {
@@ -1164,7 +1261,7 @@ html {
 .bird-card__latin {
     margin: 0;
     font-style: italic;
-    color: #a7aeb0;
+    color: var(--on-inverse-soft);
 }
 
 .bird-card__span {
@@ -1175,30 +1272,30 @@ html {
     font-weight: 800;
     line-height: 1;
     font-variant-numeric: tabular-nums;
-    color: var(--amber-ink);
+    color: var(--accent-text);
 }
 
 .bird-card--hidden .bird-card__span {
-    color: var(--amber-soft);
+    color: var(--accent-soft);
     opacity: 0.55;
 }
 
 .bird-card--right {
     border-color: var(--ok);
-    box-shadow: 0 0 0 4px rgba(63, 122, 79, 0.3);
+    box-shadow: 0 0 0 4px var(--ring-ok);
 }
 
 .bird-card--right .bird-card__tag {
-    color: #9fd3a9;
+    color: var(--ok-on-inverse);
 }
 
 .bird-card--wrong {
     border-color: var(--crit);
-    box-shadow: 0 0 0 4px rgba(179, 64, 47, 0.3);
+    box-shadow: 0 0 0 4px var(--ring-crit);
 }
 
 .bird-card--wrong .bird-card__tag {
-    color: #f0a497;
+    color: var(--crit-on-inverse);
 }
 
 .game__controls {
@@ -1215,24 +1312,24 @@ html {
     min-height: 3.3rem;
     margin: 1.25rem 0 0;
     padding: 0.8rem 1rem;
-    background-color: var(--bone);
-    border-left: 4px solid var(--line);
+    background-color: var(--surface-2);
+    border-left: 4px solid var(--rule);
     border-radius: var(--radius);
 }
 
 .game__message--good {
-    background-color: rgba(63, 122, 79, 0.12);
+    background-color: var(--ok-tint);
     border-left-color: var(--ok);
 }
 
 .game__message--bad {
-    background-color: rgba(179, 64, 47, 0.1);
+    background-color: var(--crit-tint-soft);
     border-left-color: var(--crit);
 }
 
 .game__message--warn {
-    background-color: rgba(217, 138, 36, 0.14);
-    border-left-color: var(--amber);
+    background-color: var(--accent-tint);
+    border-left-color: var(--accent);
 }
 
 .game__end {
@@ -1250,12 +1347,12 @@ html {
 
 .game--won .game__end {
     background-color: var(--ok);
-    color: #fff;
+    color: var(--on-color);
 }
 
 .game--lost .game__end {
-    background-color: var(--night);
-    color: var(--bone);
+    background-color: var(--inverse);
+    color: var(--on-inverse);
     border-top: 4px solid var(--crit);
 }
 
@@ -1271,7 +1368,7 @@ html {
 
 .game--won .game__end .qy-btn--solid:hover,
 .game--won .game__end .qy-btn--solid:focus-visible {
-    background-color: var(--night);
+    background-color: var(--inverse);
 }
 
 @media (min-width: 40em) {
@@ -1297,8 +1394,8 @@ html {
     display: grid;
     gap: 1rem;
     padding: 1.25rem;
-    background-color: var(--paper);
-    border: 1px solid var(--line);
+    background-color: var(--surface);
+    border: 1px solid var(--rule);
     border-radius: var(--radius);
 }
 
@@ -1315,8 +1412,8 @@ html {
 .board-summary__progress,
 .board-summary__food {
     padding: 1.25rem 1.5rem;
-    background-color: var(--night);
-    color: var(--bone);
+    background-color: var(--inverse);
+    color: var(--on-inverse);
     border-radius: var(--radius);
 }
 
@@ -1327,7 +1424,7 @@ html {
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--amber-soft);
+    color: var(--accent-soft);
 }
 
 .board-summary__num {
@@ -1336,13 +1433,13 @@ html {
     font-size: 2rem;
     font-weight: 800;
     line-height: 1;
-    color: var(--amber-ink);
+    color: var(--accent-text);
 }
 
 .board-summary__text {
     margin: 0.5rem 0 0;
     font-size: 0.9rem;
-    color: #a7aeb0;
+    color: var(--on-inverse-dim);
 }
 
 .board-progress {
@@ -1352,32 +1449,32 @@ html {
     appearance: none;
     border: 0;
     border-radius: 999px;
-    background-color: #343b42;
+    background-color: var(--track-inverse);
     overflow: hidden;
 }
 
 .board-progress::-webkit-progress-bar {
-    background-color: #343b42;
+    background-color: var(--track-inverse);
     border-radius: 999px;
 }
 
 .board-progress::-webkit-progress-value {
-    background-image: linear-gradient(90deg, var(--amber), var(--amber-soft));
+    background-image: linear-gradient(90deg, var(--accent), var(--accent-soft));
     border-radius: 999px;
     transition: width 0.4s ease;
 }
 
 .board-progress::-moz-progress-bar {
-    background-image: linear-gradient(90deg, var(--amber), var(--amber-soft));
+    background-image: linear-gradient(90deg, var(--accent), var(--accent-soft));
     border-radius: 999px;
 }
 
 .board-status {
     margin: 1rem 0 0;
     padding: 0.75rem 1rem;
-    border-left: 4px solid var(--line);
+    border-left: 4px solid var(--rule);
     border-radius: var(--radius);
-    background-color: var(--paper);
+    background-color: var(--surface);
 }
 
 .board-status:empty {
@@ -1386,13 +1483,13 @@ html {
 
 .board-status--ok {
     border-left-color: var(--ok);
-    background-color: rgba(63, 122, 79, 0.12);
+    background-color: var(--ok-tint);
 }
 
 .board-status--blocked {
     border-left-color: var(--crit);
-    background-color: rgba(179, 64, 47, 0.1);
-    color: #7d2a1f;
+    background-color: var(--crit-tint-soft);
+    color: var(--crit-text-strong);
 }
 
 .board-nothing {
@@ -1400,8 +1497,8 @@ html {
     margin-top: 1rem;
     padding: 1.5rem;
     text-align: center;
-    background-color: var(--paper);
-    border: 2px dashed var(--line);
+    background-color: var(--surface);
+    border: 2px dashed var(--rule);
     border-radius: var(--radius);
 }
 
@@ -1422,13 +1519,13 @@ html {
 
 .lane {
     padding: 1rem;
-    background-color: var(--bone-2);
-    border-top: 4px solid var(--stone);
+    background-color: var(--surface-2);
+    border-top: 4px solid var(--chip-neutral);
     border-radius: var(--radius);
 }
 
 .lane--treatment {
-    border-top-color: var(--amber);
+    border-top-color: var(--accent);
 }
 
 .lane--corridor {
@@ -1456,8 +1553,8 @@ html {
     font-size: 0.85rem;
     font-weight: 700;
     font-variant-numeric: tabular-nums;
-    color: var(--bone);
-    background-color: var(--night);
+    color: var(--on-inverse);
+    background-color: var(--inverse);
     border-radius: 999px;
 }
 
@@ -1468,7 +1565,7 @@ html {
 .lane__note {
     margin: 0.25rem 0 0.75rem;
     font-size: 0.85rem;
-    color: var(--stone);
+    color: var(--text-soft);
 }
 
 .lane__full {
@@ -1477,7 +1574,7 @@ html {
     font-weight: 700;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: var(--crit-ink);
+    color: var(--crit-text);
 }
 
 .lane__list {
@@ -1492,8 +1589,8 @@ html {
     padding: 1.25rem 1rem;
     font-size: 0.9rem;
     text-align: center;
-    color: var(--stone);
-    border: 2px dashed var(--line);
+    color: var(--text-soft);
+    border: 2px dashed var(--rule);
     border-radius: var(--radius);
 }
 
@@ -1501,15 +1598,15 @@ html {
     display: grid;
     gap: 0.45rem;
     padding: 1rem;
-    background-color: var(--paper);
-    border: 1px solid var(--line);
-    border-left: 4px solid var(--stone);
+    background-color: var(--surface);
+    border: 1px solid var(--rule);
+    border-left: 4px solid var(--chip-neutral);
     border-radius: var(--radius);
     transition: box-shadow 0.2s ease;
 }
 
 .patient:hover {
-    box-shadow: 0 0.6rem 1.2rem rgba(18, 22, 28, 0.1);
+    box-shadow: 0 0.6rem 1.2rem var(--shadow-soft);
 }
 
 .patient:focus {
@@ -1517,7 +1614,7 @@ html {
 }
 
 .patient:focus-visible {
-    outline: 3px solid var(--amber);
+    outline: 3px solid var(--accent);
     outline-offset: 2px;
 }
 
@@ -1526,16 +1623,16 @@ html {
 }
 
 .patient--p2 {
-    border-left-color: var(--amber);
+    border-left-color: var(--accent);
 }
 
 .patient--critical {
-    background-color: #fbf1ee;
+    background-color: var(--crit-tint);
 }
 
 .patient--blocked {
     border-color: var(--crit);
-    box-shadow: 0 0 0 3px rgba(179, 64, 47, 0.25);
+    box-shadow: 0 0 0 3px var(--ring-crit);
     animation: patient-shake 0.35s ease;
 }
 
@@ -1559,7 +1656,7 @@ html {
 }
 
 .patient__priority {
-    background-color: var(--stone);
+    background-color: var(--chip-neutral);
 }
 
 .patient--p1 .patient__priority {
@@ -1567,14 +1664,14 @@ html {
 }
 
 .patient--p2 .patient__priority {
-    background-color: var(--amber);
-    color: var(--night);
+    background-color: var(--accent);
+    color: var(--on-bright);
 }
 
 .patient__species {
     margin: 0;
     font-size: 0.92rem;
-    color: var(--stone);
+    color: var(--text-soft);
 }
 
 .patient__tags {
@@ -1589,23 +1686,23 @@ html {
 .patient__tag {
     padding: 0.05rem 0.5rem;
     font-size: 0.75rem;
-    background-color: var(--bone);
-    border: 1px solid var(--line);
+    background-color: var(--surface-2);
+    border: 1px solid var(--rule);
     border-radius: 999px;
 }
 
 .patient__meta {
     margin: 0;
     font-size: 0.82rem;
-    color: var(--stone);
+    color: var(--text-soft);
 }
 
 .patient__reason {
     margin: 0;
     padding: 0.5rem 0.7rem;
     font-size: 0.85rem;
-    color: #7d2a1f;
-    background-color: rgba(179, 64, 47, 0.1);
+    color: var(--crit-text-strong);
+    background-color: var(--crit-tint-soft);
     border-radius: var(--radius);
 }
 
@@ -1620,26 +1717,27 @@ html {
     padding: 0.4rem 0.8rem;
     font-size: 0.85rem;
     font-weight: 700;
-    color: var(--night);
+    color: var(--text);
     background-color: transparent;
-    border: 2px solid var(--night);
+    border: 2px solid var(--text);
     border-radius: var(--radius);
 }
 
 .patient__btn--main {
-    background-color: var(--amber);
-    border-color: var(--amber);
+    background-color: var(--accent);
+    border-color: var(--accent);
+    color: var(--on-bright);
 }
 
 .patient__btn:hover,
 .patient__btn:focus-visible {
-    color: var(--bone);
-    background-color: var(--night);
-    border-color: var(--night);
+    color: var(--on-inverse);
+    background-color: var(--inverse);
+    border-color: var(--text);
 }
 
 .patient__btn:focus-visible {
-    outline: 3px solid var(--amber);
+    outline: 3px solid var(--accent);
     outline-offset: 2px;
     box-shadow: none;
 }
@@ -1673,15 +1771,15 @@ html {
 }
 
 .qy-form {
-    --bs-form-valid-color: var(--ok);
+    --bs-form-valid-color: var(--ok-text);
     --bs-form-valid-border-color: var(--ok);
     --bs-form-invalid-color: var(--crit);
     --bs-form-invalid-border-color: var(--crit);
 }
 
 .qy-form .form-check-input:focus {
-    border-color: var(--amber);
-    box-shadow: 0 0 0 0.2rem rgba(217, 138, 36, 0.3);
+    border-color: var(--accent);
+    box-shadow: 0 0 0 0.2rem var(--ring-accent);
 }
 
 .qy-form .form-control.is-invalid,
@@ -1698,32 +1796,32 @@ html {
 
 .qy-form .form-control.is-invalid,
 .qy-form .form-select.is-invalid {
-    background-color: #fbefec;
+    background-color: var(--crit-tint);
 }
 
 .qy-form .form-control.is-invalid:focus,
 .qy-form .form-select.is-invalid:focus {
     border-color: var(--crit);
-    box-shadow: 0 0 0 0.2rem rgba(179, 64, 47, 0.25);
+    box-shadow: 0 0 0 0.2rem var(--ring-crit);
 }
 
 .qy-form .form-control.is-valid:focus,
 .qy-form .form-select.is-valid:focus {
     border-color: var(--ok);
-    box-shadow: 0 0 0 0.2rem rgba(63, 122, 79, 0.25);
+    box-shadow: 0 0 0 0.2rem var(--ring-ok);
 }
 
 .qy-hint {
     margin: 0.35rem 0 0;
     font-size: 0.82rem;
-    color: var(--stone);
+    color: var(--text-soft);
 }
 
 .qy-error {
     margin: 0.35rem 0 0;
     font-size: 0.88rem;
     font-weight: 700;
-    color: var(--crit-ink);
+    color: var(--crit-text);
 }
 
 .qy-error:empty {
@@ -1755,20 +1853,20 @@ html {
     align-items: flex-start;
     gap: 0.65rem;
     padding: 0.85rem 1rem;
-    background-color: #fff;
-    border: 1px solid var(--line);
+    background-color: var(--surface);
+    border: 1px solid var(--rule);
     border-radius: var(--radius);
     transition: border-color 0.2s ease, background-color 0.2s ease;
 }
 
 .qy-type:hover {
-    border-color: var(--amber);
+    border-color: var(--accent);
 }
 
 .qy-type:has(.qy-type__input:checked) {
-    background-color: #fdf6ea;
-    border-color: var(--amber);
-    box-shadow: inset 0 0 0 1px var(--amber);
+    background-color: var(--accent-tint-solid);
+    border-color: var(--accent);
+    box-shadow: inset 0 0 0 1px var(--accent);
 }
 
 .qy-type:has(.is-invalid) {
@@ -1793,7 +1891,7 @@ html {
 
 .qy-type__share {
     font-size: 0.85rem;
-    color: var(--stone);
+    color: var(--text-soft);
 }
 
 .qy-type__left {
@@ -1802,24 +1900,24 @@ html {
     font-weight: 700;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: var(--ok);
+    color: var(--ok-text);
 }
 
 .qy-type--soldout {
-    background-color: var(--bone);
+    background-color: var(--surface-2);
     border-style: dashed;
 }
 
 .qy-type--soldout .qy-type__left {
-    color: var(--crit-ink);
+    color: var(--crit-text);
 }
 
 .qy-summary {
     display: none;
     margin-bottom: 1.5rem;
     padding: 1.25rem 1.5rem;
-    background-color: #fbefec;
-    border: 1px solid rgba(179, 64, 47, 0.35);
+    background-color: var(--crit-tint);
+    border: 1px solid var(--crit-edge);
     border-left: 4px solid var(--crit);
     border-radius: var(--radius);
 }
@@ -1831,7 +1929,7 @@ html {
 .qy-summary__title {
     margin-bottom: 0.5rem;
     font-size: 1.2rem;
-    color: var(--crit-ink);
+    color: var(--crit-text);
 }
 
 .qy-summary__list {
@@ -1841,16 +1939,16 @@ html {
 
 .ticket {
     display: grid;
-    color: var(--bone);
-    background-color: var(--night);
+    color: var(--on-inverse);
+    background-color: var(--inverse);
     border-radius: var(--radius);
-    box-shadow: 0.8rem 0.8rem 0 rgba(217, 138, 36, 0.35);
+    box-shadow: 0.8rem 0.8rem 0 var(--shadow-accent);
     transition: box-shadow 0.3s ease;
 }
 
 .ticket--ready,
 .ticket--issued {
-    box-shadow: 0.8rem 0.8rem 0 rgba(63, 122, 79, 0.4);
+    box-shadow: 0.8rem 0.8rem 0 var(--shadow-ok);
 }
 
 .ticket__main {
@@ -1859,8 +1957,8 @@ html {
 
 .ticket__stub {
     padding: 1.25rem 1.5rem 1.5rem;
-    background-color: var(--night-2);
-    border-top: 2px dashed #4a5257;
+    background-color: var(--inverse-2);
+    border-top: 2px dashed var(--rule-inverse-soft);
 }
 
 .ticket__top {
@@ -1876,7 +1974,7 @@ html {
     font-family: var(--font-display);
     font-weight: 800;
     letter-spacing: 0.04em;
-    color: var(--amber);
+    color: var(--accent);
 }
 
 .ticket__stamp {
@@ -1886,15 +1984,15 @@ html {
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: #a7aeb0;
-    border: 2px solid #4a5257;
+    color: var(--on-inverse-dim);
+    border: 2px solid var(--rule-inverse-soft);
     border-radius: var(--radius);
     transform: rotate(-3deg);
 }
 
 .ticket--ready .ticket__stamp,
 .ticket--issued .ticket__stamp {
-    color: #9fd3a9;
+    color: var(--ok-on-inverse);
     border-color: var(--ok);
 }
 
@@ -1917,7 +2015,7 @@ html {
     align-items: baseline;
     gap: 1rem;
     padding-bottom: 0.4rem;
-    border-bottom: 1px solid #2b3238;
+    border-bottom: 1px solid var(--rule-inverse);
 }
 
 .ticket dt {
@@ -1926,7 +2024,7 @@ html {
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--amber-soft);
+    color: var(--accent-soft);
 }
 
 .ticket dd {
@@ -1938,7 +2036,7 @@ html {
 
 .ticket .ticket__empty {
     font-style: italic;
-    color: #9aa3a7;
+    color: var(--on-inverse-dim);
 }
 
 .ticket .ticket__total {
@@ -1950,14 +2048,14 @@ html {
     font-family: var(--font-display);
     font-size: 1.5rem;
     font-weight: 800;
-    color: var(--amber);
+    color: var(--accent);
 }
 
 .ticket .ticket__total .ticket__empty {
     font-family: var(--font-body);
     font-size: 1rem;
     font-weight: 400;
-    color: #9aa3a7;
+    color: var(--on-inverse-dim);
 }
 
 .ticket__code-label {
@@ -1966,7 +2064,7 @@ html {
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--amber-soft);
+    color: var(--accent-soft);
 }
 
 .ticket__code {
@@ -1975,7 +2073,7 @@ html {
     font-size: 1.8rem;
     font-weight: 800;
     letter-spacing: 0.06em;
-    color: var(--amber);
+    color: var(--accent);
 }
 
 .ticket--issued {
@@ -1987,7 +2085,7 @@ html {
 }
 
 .ticket--issued:focus-visible {
-    outline: 3px solid var(--amber);
+    outline: 3px solid var(--accent);
     outline-offset: 4px;
 }
 
@@ -2012,9 +2110,9 @@ html {
     margin: 0;
     padding: 1.5rem;
     text-align: center;
-    color: var(--stone);
-    background-color: var(--paper);
-    border: 2px dashed var(--line);
+    color: var(--text-soft);
+    background-color: var(--surface);
+    border: 2px dashed var(--rule);
     border-radius: var(--radius);
 }
 
@@ -2035,7 +2133,7 @@ html {
 
     .ticket--issued .ticket__stub {
         border-top: 0;
-        border-left: 2px dashed #4a5257;
+        border-left: 2px dashed var(--rule-inverse-soft);
     }
 }
 
@@ -2071,12 +2169,12 @@ html {
     grid-template-columns: repeat(auto-fit, minmax(7.5rem, 1fr));
     gap: 1px;
     margin: 1.75rem 0;
-    background-color: var(--line);
-    border: 1px solid var(--line);
+    background-color: var(--rule);
+    border: 1px solid var(--rule);
 }
 
 .bird-summary__item {
-    background-color: var(--paper);
+    background-color: var(--surface);
     padding: 0.9rem 1rem;
 }
 
@@ -2086,14 +2184,14 @@ html {
     font-weight: 800;
     line-height: 1;
     margin-bottom: 0.3rem;
-    color: var(--night);
+    color: var(--text);
 }
 
 .bird-summary__label {
     margin-bottom: 0;
     font-size: 0.8rem;
     line-height: 1.35;
-    color: var(--stone);
+    color: var(--text-soft);
 }
 
 .qy-toolbar {
@@ -2101,9 +2199,9 @@ html {
     grid-template-columns: 1fr;
     gap: 1rem 1.5rem;
     padding: 1.25rem;
-    background-color: var(--paper);
-    border: 1px solid var(--line);
-    border-left: 4px solid var(--amber);
+    background-color: var(--surface);
+    border: 1px solid var(--rule);
+    border-left: 4px solid var(--accent);
 }
 
 .qy-toolbar__selects {
@@ -2117,14 +2215,14 @@ html {
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--night);
+    color: var(--text);
     margin-bottom: 0.35rem;
 }
 
 .qy-toolbar__hint {
     margin: 0.4rem 0 0;
     font-size: 0.8rem;
-    color: var(--stone);
+    color: var(--text-soft);
 }
 
 .qy-toolbar__row {
@@ -2149,37 +2247,37 @@ html {
     font-size: 0.82rem;
     font-weight: 700;
     padding: 0.3rem 0.95rem;
-    color: var(--night);
+    color: var(--text);
     background-color: transparent;
-    border: 1px solid var(--line);
+    border: 1px solid var(--rule);
     border-radius: 999px;
     cursor: pointer;
 }
 
 .qy-filter:hover,
 .qy-viewswitch button:hover {
-    border-color: var(--amber);
-    background-color: rgba(217, 138, 36, 0.1);
+    border-color: var(--accent);
+    background-color: var(--accent-tint);
 }
 
 .qy-filter:focus-visible,
 .qy-viewswitch button:focus-visible {
-    outline: 3px solid var(--amber-ink);
+    outline: 3px solid var(--accent-text);
     outline-offset: 2px;
 }
 
 .qy-filter.is-active,
 .qy-viewswitch button.is-active {
-    color: var(--bone);
-    background-color: var(--night);
-    border-color: var(--night);
+    color: var(--on-inverse);
+    background-color: var(--inverse);
+    border-color: var(--text);
 }
 
 .qy-count {
     margin: 1.25rem 0 0.75rem;
     font-size: 0.88rem;
     font-weight: 700;
-    color: var(--night);
+    color: var(--text);
 }
 
 .patient-grid {
@@ -2191,9 +2289,9 @@ html {
 .patient-card {
     display: flex;
     flex-direction: column;
-    background-color: var(--paper);
-    border: 1px solid var(--line);
-    border-top: 4px solid var(--stone);
+    background-color: var(--surface);
+    border: 1px solid var(--rule);
+    border-top: 4px solid var(--chip-neutral);
 }
 
 .patient-card--critical {
@@ -2201,7 +2299,7 @@ html {
 }
 
 .patient-card--care {
-    border-top-color: var(--amber);
+    border-top-color: var(--accent);
 }
 
 .patient-card--ready {
@@ -2213,7 +2311,7 @@ html {
 }
 
 .patient-card:hover {
-    box-shadow: 0.4rem 0.4rem 0 rgba(217, 138, 36, 0.35);
+    box-shadow: 0.4rem 0.4rem 0 var(--shadow-accent);
 }
 
 .patient-card__media {
@@ -2241,7 +2339,7 @@ html {
     gap: 0.4rem;
     padding: 1rem;
     text-align: center;
-    background-image: repeating-linear-gradient(135deg, var(--bone-2), var(--bone-2) 6px, var(--bone) 6px, var(--bone) 12px);
+    background-image: repeating-linear-gradient(135deg, var(--surface-2), var(--surface-2) 6px, var(--page) 6px, var(--page) 12px);
 }
 
 .patient-card__kk {
@@ -2249,7 +2347,7 @@ html {
     font-family: var(--font-display);
     font-size: 1.6rem;
     font-weight: 800;
-    color: var(--night);
+    color: var(--text);
 }
 
 .patient-card__noshot {
@@ -2258,7 +2356,7 @@ html {
     font-weight: 700;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: var(--stone);
+    color: var(--text-soft);
 }
 
 .patient-card__body {
@@ -2286,13 +2384,13 @@ html {
     font-family: var(--font-body);
     font-size: 0.95rem;
     font-weight: 400;
-    color: var(--stone);
+    color: var(--text-soft);
 }
 
 .patient-card__species {
     margin-bottom: 0.7rem;
     font-size: 0.88rem;
-    color: var(--stone);
+    color: var(--text-soft);
 }
 
 .patient-card__reason {
@@ -2305,7 +2403,7 @@ html {
     display: grid;
     gap: 0.3rem;
     padding-top: 0.8rem;
-    border-top: 1px solid var(--line);
+    border-top: 1px solid var(--rule);
 }
 
 .patient-card__fact {
@@ -2321,7 +2419,7 @@ html {
     text-transform: uppercase;
     font-size: 0.72rem;
     padding-top: 0.15rem;
-    color: var(--stone);
+    color: var(--text-soft);
 }
 
 .patient-card__fact dd {
@@ -2332,7 +2430,7 @@ html {
     margin-bottom: 1.1rem;
     font-size: 0.9rem;
     font-style: italic;
-    color: var(--night);
+    color: var(--text);
 }
 
 .patient-card__link {
@@ -2349,8 +2447,8 @@ html {
 .qy-empty {
     padding: 2.5rem 1.5rem;
     text-align: center;
-    background-color: var(--paper);
-    border: 1px dashed var(--line);
+    background-color: var(--surface);
+    border: 1px dashed var(--rule);
 }
 
 .qy-empty__title {
@@ -2363,7 +2461,7 @@ html {
 .qy-empty__text {
     max-width: 32rem;
     margin: 0 auto 1.25rem;
-    color: var(--stone);
+    color: var(--text-soft);
 }
 
 .qy-zoom {
@@ -2385,14 +2483,14 @@ html {
     content: "View";
     position: absolute;
     right: 0.5rem;
-    bottom: 0.5rem;
+    top: 0.5rem;
     padding: 0.1rem 0.55rem;
     font-size: 0.7rem;
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--night);
-    background-color: var(--amber);
+    color: var(--on-bright);
+    background-color: var(--accent);
     opacity: 0;
     transition: opacity 0.25s ease;
 }
@@ -2411,21 +2509,21 @@ html {
     height: 2.9rem;
     font-size: 1.1rem;
     line-height: 1;
-    color: var(--bone);
-    background-color: var(--night);
-    border: 1px solid var(--night);
+    color: var(--on-inverse);
+    background-color: var(--inverse);
+    border: 1px solid var(--text);
     border-radius: 999px;
     cursor: pointer;
 }
 
 .qy-top:hover {
-    background-color: var(--amber);
-    border-color: var(--amber);
-    color: var(--night);
+    background-color: var(--accent);
+    border-color: var(--accent);
+    color: var(--on-bright);
 }
 
 .qy-top:focus-visible {
-    outline: 3px solid var(--amber-ink);
+    outline: 3px solid var(--accent-text);
     outline-offset: 2px;
 }
 
@@ -2438,12 +2536,9 @@ html {
 }
 
 .qy-light__back {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(18, 22, 28, 0.8);
+    position: fixed;
+    inset: 0;
+    background-color: var(--overlay);
     display: none;
 }
 
@@ -2451,8 +2546,8 @@ html {
     position: absolute;
     margin: 0;
     overflow: hidden;
-    background-color: var(--night);
-    border: 1px solid var(--amber);
+    background-color: var(--inverse);
+    border: 1px solid var(--accent);
     z-index: 2;
 }
 
@@ -2470,8 +2565,8 @@ html {
     bottom: 0;
     padding: 0.7rem 1rem;
     font-size: 0.85rem;
-    color: var(--bone);
-    background-color: rgba(18, 22, 28, 0.85);
+    color: var(--on-inverse);
+    background-color: var(--overlay-2);
 }
 
 .qy-light__close {
@@ -2481,24 +2576,24 @@ html {
     padding: 0.25rem 0.8rem;
     font-size: 0.78rem;
     font-weight: 700;
-    color: var(--night);
-    background-color: var(--amber);
-    border: 1px solid var(--amber);
+    color: var(--on-bright);
+    background-color: var(--accent);
+    border: 1px solid var(--accent);
     border-radius: 999px;
     cursor: pointer;
 }
 
 .qy-light__close:focus-visible {
-    outline: 3px solid var(--bone);
+    outline: 3px solid var(--on-inverse);
     outline-offset: 2px;
 }
 
 .qy-acc {
-    border-top: 1px solid var(--line);
+    border-top: 1px solid var(--rule);
 }
 
 .qy-acc__item {
-    border-bottom: 1px solid var(--line);
+    border-bottom: 1px solid var(--rule);
 }
 
 .qy-acc__head {
@@ -2511,18 +2606,18 @@ html {
     font-size: 1.1rem;
     font-weight: 600;
     text-align: left;
-    color: var(--night);
+    color: var(--text);
     background-color: transparent;
     border: 0;
     cursor: pointer;
 }
 
 .qy-acc__head:hover {
-    color: var(--amber-ink);
+    color: var(--accent-text);
 }
 
 .qy-acc__head:focus-visible {
-    outline: 3px solid var(--amber-ink);
+    outline: 3px solid var(--accent-text);
     outline-offset: 2px;
 }
 
@@ -2531,7 +2626,7 @@ html {
     margin-left: auto;
     font-size: 1.4rem;
     line-height: 1;
-    color: var(--amber-ink);
+    color: var(--accent-text);
 }
 
 .qy-acc__head[aria-expanded="true"]::after {
@@ -2557,16 +2652,16 @@ html {
     max-width: min(26rem, calc(100% - 2rem));
     padding: 0.8rem 1.2rem;
     font-weight: 700;
-    color: var(--night);
-    background-color: var(--amber-soft);
-    border: 1px solid var(--amber-ink);
+    color: var(--on-bright);
+    background-color: var(--accent-soft);
+    border: 1px solid var(--accent-text);
     border-top: 0;
-    box-shadow: 0 0.4rem 1.2rem rgba(18, 22, 28, 0.25);
+    box-shadow: 0 0.4rem 1.2rem var(--shadow-strong);
 }
 
 .qy-toast--warn {
-    background-color: #f6d9d2;
-    border-color: var(--crit-ink);
+    background-color: var(--toast-warn);
+    border-color: var(--crit-text);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -2609,24 +2704,24 @@ html {
     align-items: center;
     padding: 0.45rem;
     text-align: left;
-    background-color: var(--paper);
-    border: 1px solid var(--line);
+    background-color: var(--surface);
+    border: 1px solid var(--rule);
     cursor: pointer;
 }
 
 .adopt-bird:hover {
-    border-color: var(--amber);
+    border-color: var(--accent);
 }
 
 .adopt-bird:focus-visible {
-    outline: 3px solid var(--amber-ink);
+    outline: 3px solid var(--accent-text);
     outline-offset: 2px;
 }
 
 .adopt-bird.is-on {
-    background-color: var(--night);
-    border-color: var(--night);
-    color: var(--bone);
+    background-color: var(--inverse);
+    border-color: var(--text);
+    color: var(--on-inverse);
 }
 
 .adopt-bird__media {
@@ -2634,7 +2729,7 @@ html {
     width: 3rem;
     height: 3rem;
     overflow: hidden;
-    background-color: var(--bone-2);
+    background-color: var(--surface-2);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2650,7 +2745,7 @@ html {
     font-family: var(--font-display);
     font-size: 0.85rem;
     font-weight: 700;
-    color: var(--night);
+    color: var(--text);
     text-align: center;
     line-height: 1.1;
 }
@@ -2672,7 +2767,7 @@ html {
 .adopt-bird__status {
     font-size: 0.75rem;
     line-height: 1.3;
-    color: var(--stone);
+    color: var(--text-soft);
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -2680,7 +2775,7 @@ html {
 
 .adopt-bird.is-on .adopt-bird__species,
 .adopt-bird.is-on .adopt-bird__status {
-    color: #c9cfd1;
+    color: var(--on-inverse-soft);
 }
 
 .adopt__levels {
@@ -2695,24 +2790,24 @@ html {
     gap: 0.6rem;
     padding: 0.9rem 1rem;
     text-align: left;
-    background-color: var(--paper);
-    border: 1px solid var(--line);
+    background-color: var(--surface);
+    border: 1px solid var(--rule);
     cursor: pointer;
 }
 
 .adopt-level:hover {
-    border-color: var(--amber);
+    border-color: var(--accent);
 }
 
 .adopt-level:focus-visible {
-    outline: 3px solid var(--amber-ink);
+    outline: 3px solid var(--accent-text);
     outline-offset: 2px;
 }
 
 .adopt-level.is-on {
-    border-color: var(--night);
-    border-left: 4px solid var(--amber);
-    background-color: #fffaf0;
+    border-color: var(--text);
+    border-left: 4px solid var(--accent);
+    background-color: var(--accent-tint-solid);
 }
 
 .adopt-level__head {
@@ -2729,7 +2824,7 @@ html {
 .adopt-level__price {
     font-size: 0.9rem;
     font-weight: 700;
-    color: var(--amber-ink);
+    color: var(--accent-text);
 }
 
 .adopt-level__perks {
@@ -2743,7 +2838,7 @@ html {
     padding-left: 0.9rem;
     font-size: 0.82rem;
     line-height: 1.4;
-    color: var(--stone);
+    color: var(--text-soft);
 }
 
 .adopt-level__perk::before {
@@ -2754,7 +2849,7 @@ html {
     width: 0.35rem;
     height: 0.35rem;
     border-radius: 50%;
-    background-color: var(--amber);
+    background-color: var(--accent);
 }
 
 .adopt__months {
@@ -2769,8 +2864,8 @@ html {
     padding: 0.4rem 0.9rem;
     text-align: center;
     font-weight: 700;
-    background-color: var(--paper);
-    border: 1px solid var(--line);
+    background-color: var(--surface);
+    border: 1px solid var(--rule);
     cursor: pointer;
 }
 
@@ -2782,17 +2877,17 @@ html {
 }
 
 .adopt__month:hover {
-    border-color: var(--amber);
+    border-color: var(--accent);
 }
 
 .adopt__month:has(input:checked) {
-    background-color: var(--night);
-    border-color: var(--night);
-    color: var(--bone);
+    background-color: var(--inverse);
+    border-color: var(--text);
+    color: var(--on-inverse);
 }
 
 .adopt__month:has(input:focus-visible) {
-    outline: 3px solid var(--amber-ink);
+    outline: 3px solid var(--accent-text);
     outline-offset: 2px;
 }
 
@@ -2808,12 +2903,12 @@ html {
     align-items: center;
     justify-content: space-between;
     padding: 0.6rem 0.9rem;
-    background-color: var(--paper);
-    border: 1px solid var(--line);
+    background-color: var(--surface);
+    border: 1px solid var(--rule);
 }
 
 .adopt-extra.is-on {
-    border-left: 4px solid var(--amber);
+    border-left: 4px solid var(--accent);
 }
 
 .adopt-extra__name {
@@ -2824,7 +2919,7 @@ html {
 .adopt-extra__meta {
     margin: 0;
     font-size: 0.8rem;
-    color: var(--stone);
+    color: var(--text-soft);
 }
 
 .adopt-extra__steps {
@@ -2839,19 +2934,19 @@ html {
     font-size: 1rem;
     font-weight: 700;
     line-height: 1;
-    color: var(--night);
-    background-color: var(--bone-2);
-    border: 1px solid var(--line);
+    color: var(--text);
+    background-color: var(--surface-2);
+    border: 1px solid var(--rule);
     cursor: pointer;
 }
 
 .adopt-extra__btn:hover {
-    background-color: var(--amber);
-    border-color: var(--amber);
+    background-color: var(--accent);
+    border-color: var(--accent);
 }
 
 .adopt-extra__btn:focus-visible {
-    outline: 3px solid var(--amber-ink);
+    outline: 3px solid var(--accent-text);
     outline-offset: 2px;
 }
 
@@ -2864,9 +2959,9 @@ html {
 
 .adopt__summary {
     padding: 1.25rem;
-    background-color: var(--paper);
-    border: 1px solid var(--line);
-    border-top: 4px solid var(--night);
+    background-color: var(--surface);
+    border: 1px solid var(--rule);
+    border-top: 4px solid var(--text);
 }
 
 .adopt__summary-title {
@@ -2887,12 +2982,12 @@ html {
     justify-content: space-between;
     font-size: 0.88rem;
     padding-bottom: 0.3rem;
-    border-bottom: 1px dotted var(--line);
+    border-bottom: 1px dotted var(--rule);
 }
 
 .adopt-line dt {
     font-weight: 700;
-    color: var(--stone);
+    color: var(--text-soft);
 }
 
 .adopt-line dd {
@@ -2918,7 +3013,7 @@ html {
 
 .adopt__monthly {
     font-size: 0.85rem;
-    color: var(--stone);
+    color: var(--text-soft);
     margin-bottom: 1.2rem;
 }
 
@@ -2943,7 +3038,7 @@ html {
 }
 
 .spend__label {
-    color: var(--stone);
+    color: var(--text-soft);
 }
 
 .spend__value {
@@ -2954,12 +3049,12 @@ html {
 .spend__track {
     height: 0.55rem;
     margin: 0.2rem 0 0.15rem;
-    background-color: var(--bone-2);
+    background-color: var(--surface-2);
 }
 
 .spend__bar {
     height: 100%;
-    background-color: var(--amber);
+    background-color: var(--accent);
 }
 
 .spend__bar--vitamins {
@@ -2977,14 +3072,14 @@ html {
 .spend__money {
     margin: 0;
     font-size: 0.75rem;
-    color: var(--stone);
+    color: var(--text-soft);
 }
 
 .adopt__source {
     margin: 1rem 0 1.2rem;
     font-size: 0.78rem;
     line-height: 1.45;
-    color: var(--stone);
+    color: var(--text-soft);
 }
 
 .adopt__warning {
@@ -2992,9 +3087,9 @@ html {
     padding: 0.6rem 0.8rem;
     font-size: 0.85rem;
     font-weight: 700;
-    color: var(--crit-ink);
-    background-color: #f8e7e2;
-    border-left: 3px solid var(--crit-ink);
+    color: var(--crit-text);
+    background-color: var(--crit-tint);
+    border-left: 3px solid var(--crit-text);
 }
 
 .adopt__next {
@@ -3003,9 +3098,9 @@ html {
 }
 
 .adopt__next.is-off {
-    background-color: var(--bone-2);
-    border-color: var(--line);
-    color: var(--stone);
+    background-color: var(--surface-2);
+    border-color: var(--rule);
+    color: var(--text-soft);
     cursor: not-allowed;
 }
 
@@ -3014,13 +3109,13 @@ html {
     margin-bottom: 1.25rem;
     font-size: 0.9rem;
     font-weight: 700;
-    background-color: var(--bone-2);
-    border-left: 3px solid var(--amber);
+    background-color: var(--surface-2);
+    border-left: 3px solid var(--accent);
 }
 
 .qy-done {
     padding: 1.5rem;
-    background-color: var(--paper);
+    background-color: var(--surface);
     border: 1px solid var(--ok);
     border-top: 4px solid var(--ok);
 }
@@ -3030,7 +3125,7 @@ html {
     font-weight: 700;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--ok);
+    color: var(--ok-text);
     margin-bottom: 0.4rem;
 }
 
@@ -3042,7 +3137,7 @@ html {
 
 .qy-done__text {
     font-size: 0.92rem;
-    color: var(--stone);
+    color: var(--text-soft);
 }
 
 .qy-done .adopt__lines {
@@ -3069,4 +3164,482 @@ html {
 
 .qy-aside--wide .qy-facts dd {
     margin-bottom: 0;
+}
+
+.qy-locked {
+    overflow: hidden;
+}
+
+.qy-nav__tools {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.qy-mode {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.35rem 0.75rem;
+    border: 1px solid var(--rule-inverse-soft);
+    border-radius: 999px;
+    background-color: transparent;
+    color: var(--on-inverse-soft);
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.qy-mode svg {
+    width: 1.05rem;
+    height: 1.05rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    flex: none;
+}
+
+.qy-mode__moon {
+    display: none;
+}
+
+.qy-mode[aria-pressed="true"] .qy-mode__sun {
+    display: none;
+}
+
+.qy-mode[aria-pressed="true"] .qy-mode__moon {
+    display: block;
+    fill: var(--accent-soft);
+    stroke: var(--accent-soft);
+}
+
+.qy-mode:hover {
+    color: var(--accent-soft);
+    border-color: var(--accent);
+}
+
+.qy-mode:focus-visible {
+    outline: 3px solid var(--accent-soft);
+    outline-offset: 2px;
+}
+
+.qy-nav__account {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.2rem;
+    margin-top: 0.6rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--rule-inverse);
+}
+
+.qy-nav__out {
+    background-color: transparent;
+    border: 0;
+    font: inherit;
+    cursor: pointer;
+}
+
+.qy-follow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.35rem 0.75rem;
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    background-color: var(--surface);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.qy-follow svg {
+    width: 0.95rem;
+    height: 0.95rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.7;
+    flex: none;
+}
+
+.qy-follow:hover {
+    border-color: var(--accent);
+    color: var(--accent-text);
+}
+
+.qy-follow.is-on {
+    background-color: var(--accent-tint);
+    border-color: var(--accent);
+    color: var(--accent-text);
+}
+
+.qy-follow.is-on svg {
+    fill: var(--accent);
+    stroke: var(--accent);
+}
+
+.qy-follow:focus-visible {
+    outline: 3px solid var(--accent-text);
+    outline-offset: 2px;
+}
+
+.patient-card__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: auto;
+}
+
+.adopt-bird--any .adopt-bird__media {
+    background-image: repeating-linear-gradient(135deg, var(--surface-2) 0 6px, var(--surface) 6px 12px);
+}
+
+.adopt-bird--any .adopt-bird__name {
+    color: var(--accent-text);
+}
+
+.adopt__keep {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+}
+
+.adopt-extra__btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    border-color: var(--rule);
+    background-color: var(--surface-2);
+    color: var(--text-soft);
+}
+
+.adopt-extra__btn:disabled:hover {
+    border-color: var(--rule);
+    background-color: var(--surface-2);
+    color: var(--text-soft);
+}
+
+.qy-form .form-control,
+.qy-form .form-select {
+    background-color: var(--surface);
+    border-color: var(--rule);
+    color: var(--text);
+}
+
+.qy-form .form-control::placeholder {
+    color: var(--text-soft);
+    opacity: 1;
+}
+
+.qy-form .form-control:focus,
+.qy-form .form-select:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 0.2rem var(--ring-accent);
+}
+
+.qy-form__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+}
+
+.qy-demo {
+    border: 1px solid var(--crit-edge);
+    border-left: 4px solid var(--crit);
+    border-radius: var(--radius);
+    background-color: var(--crit-tint);
+    padding: 1rem 1.1rem;
+}
+
+.qy-demo__title {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--crit-text);
+    margin-bottom: 0.3rem;
+}
+
+.qy-aside--login .form-label {
+    color: var(--on-inverse);
+}
+
+.qy-aside--login .qy-error {
+    color: var(--crit-on-inverse);
+}
+
+.qy-hint--light {
+    color: var(--on-inverse-dim);
+}
+
+.qy-pagehead--account {
+    background-image: linear-gradient(var(--veil), var(--veil-2)), url("../images/banding.jpg");
+}
+
+.qy-pagehead--profile {
+    background-image: linear-gradient(var(--veil), var(--veil-2)), url("../images/eagle-owl.jpg");
+}
+
+.qy-guest {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    border: 1px solid var(--rule);
+    border-left: 4px solid var(--accent);
+    border-radius: var(--radius);
+    background-color: var(--surface);
+    padding: 1.1rem 1.2rem;
+}
+
+.qy-counts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+    gap: 1px;
+    background-color: var(--rule);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+.qy-counts__item {
+    background-color: var(--surface);
+    padding: 1.1rem;
+}
+
+.qy-counts__num {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    line-height: 1.1;
+    color: var(--text);
+    margin-bottom: 0.2rem;
+}
+
+.qy-counts__label {
+    font-size: 0.85rem;
+    color: var(--text-soft);
+    margin-bottom: 0;
+}
+
+.qy-profile__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1rem 0 0.75rem;
+}
+
+.qy-btn--danger {
+    border-color: var(--crit-text);
+    color: var(--crit-text);
+}
+
+.qy-btn--danger:hover,
+.qy-btn--danger:focus-visible {
+    background-color: var(--crit);
+    border-color: var(--crit);
+    color: var(--on-color);
+}
+
+.qy-keep {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border: 1px solid var(--rule);
+    border-top: 3px solid var(--chip-neutral);
+    border-radius: var(--radius);
+    background-color: var(--surface);
+    overflow: hidden;
+}
+
+.qy-keep--critical {
+    border-top-color: var(--crit);
+}
+
+.qy-keep--care {
+    border-top-color: var(--accent);
+}
+
+.qy-keep--ready {
+    border-top-color: var(--ok);
+}
+
+.qy-keep--resident {
+    border-top-color: var(--pine);
+}
+
+.qy-keep__media img {
+    width: 100%;
+    height: 11rem;
+    object-fit: cover;
+    display: block;
+}
+
+.qy-keep__screen {
+    height: 11rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+    text-align: center;
+    padding: 0.75rem;
+    background-image: repeating-linear-gradient(135deg, var(--surface-2) 0 8px, var(--surface) 8px 16px);
+}
+
+.qy-keep__kk {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    color: var(--text);
+    margin-bottom: 0;
+}
+
+.qy-keep__noshot {
+    font-size: 0.8rem;
+    color: var(--text-soft);
+    margin-bottom: 0;
+}
+
+.qy-keep__body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    padding: 1rem;
+    flex-grow: 1;
+}
+
+.qy-keep__body .qy-chip {
+    align-self: flex-start;
+}
+
+.qy-keep__name {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    margin-bottom: 0;
+}
+
+.qy-keep__species {
+    font-size: 0.9rem;
+    color: var(--text-soft);
+    margin-bottom: 0;
+}
+
+.qy-keep__note,
+.qy-keep__meta {
+    font-size: 0.88rem;
+    margin-bottom: 0;
+}
+
+.qy-keep__meta {
+    color: var(--text-soft);
+}
+
+.qy-keep__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: auto;
+    padding-top: 0.6rem;
+}
+
+.qy-keep__drop {
+    background-color: transparent;
+    border: 0;
+    border-bottom: 1px solid var(--rule);
+    padding: 0.1rem 0;
+    font: inherit;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--crit-text);
+    cursor: pointer;
+}
+
+.qy-keep__drop:hover {
+    border-bottom-color: var(--crit-text);
+}
+
+.qy-keep__drop:focus-visible {
+    outline: 3px solid var(--crit-text);
+    outline-offset: 2px;
+}
+
+.qy-table__money {
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+.qy-raw {
+    margin-top: 1rem;
+}
+
+.qy-raw summary {
+    cursor: pointer;
+    font-weight: 700;
+    color: var(--accent-soft);
+}
+
+.qy-raw summary:focus-visible {
+    outline: 3px solid var(--accent-soft);
+    outline-offset: 3px;
+}
+
+.qy-raw pre {
+    margin-top: 0.75rem;
+    max-height: 18rem;
+    overflow: auto;
+    padding: 0.9rem;
+    border: 1px solid var(--rule-inverse);
+    border-radius: var(--radius);
+    background-color: var(--inverse-2);
+    color: var(--on-inverse-soft);
+    font-size: 0.78rem;
+    line-height: 1.5;
+}
+
+.qy-section--dark code {
+    color: var(--accent-soft);
+}
+
+@media (max-width: 26em) {
+    .qy-mode__label {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+    }
+}
+
+@media (min-width: 75em) {
+    .qy-nav__tools {
+        order: 3;
+        margin-left: 0.9rem;
+    }
+
+    .qy-nav .navbar-collapse {
+        order: 2;
+    }
+
+    .qy-nav__account {
+        margin-top: 0;
+        padding-top: 0;
+        padding-left: 0.9rem;
+        margin-left: 0.6rem;
+        border-top: 0;
+        border-left: 1px solid var(--rule-inverse);
+    }
 }
