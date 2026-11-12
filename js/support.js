@@ -7,6 +7,25 @@ const pledge = {
 
 const TODAY = "2026-11-10";
 const LAST_DAY = "2027-12-31";
+const CAP = 9;
+
+const ANY = {
+    id: "any",
+    name: "Any bird",
+    kk: "Қай құс",
+    species: "Wherever it is needed most",
+    monthly: 12000
+};
+
+function chosenBird() {
+    if (!pledge.birdId) {
+        return null;
+    }
+    if (pledge.birdId === ANY.id) {
+        return ANY;
+    }
+    return birdById(pledge.birdId);
+}
 
 function make(tag, className, text) {
     const element = document.createElement(tag);
@@ -67,6 +86,21 @@ function totalCost() {
 function buildBirds() {
     const box = document.getElementById("adopt-birds");
     box.textContent = "";
+
+    const any = make("button", "adopt-bird adopt-bird--any");
+    any.type = "button";
+    any.setAttribute("data-bird", ANY.id);
+    any.setAttribute("aria-pressed", "false");
+    const anyMedia = make("span", "adopt-bird__media");
+    anyMedia.appendChild(make("span", "adopt-bird__kk", ANY.kk));
+    any.appendChild(anyMedia);
+    const anyText = make("span", "adopt-bird__text");
+    anyText.appendChild(make("span", "adopt-bird__name", ANY.name));
+    anyText.appendChild(make("span", "adopt-bird__species", ANY.species));
+    anyText.appendChild(make("span", "adopt-bird__status", "The duty vet decides on the day"));
+    any.appendChild(anyText);
+    box.appendChild(any);
+
     BIRDS.forEach(function (bird) {
         const button = make("button", "adopt-bird");
         button.type = "button";
@@ -181,7 +215,7 @@ function renderSpend(monthly) {
 }
 
 function renderSummary() {
-    const bird = pledge.birdId ? birdById(pledge.birdId) : null;
+    const bird = chosenBird();
     const level = levelById(pledge.levelId);
     const lines = document.getElementById("adopt-lines");
     lines.textContent = "";
@@ -216,12 +250,10 @@ function renderSummary() {
     const next = document.getElementById("adopt-next");
     if (bird) {
         warning.hidden = true;
-        next.removeAttribute("aria-disabled");
         next.classList.remove("is-off");
-        next.textContent = "Pledge for " + bird.name + " →";
+        next.textContent = bird.id === ANY.id ? "Pledge for any bird →" : "Pledge for " + bird.name + " →";
     } else {
         warning.hidden = false;
-        next.setAttribute("aria-disabled", "true");
         next.classList.add("is-off");
         next.textContent = "Choose a bird first";
     }
@@ -236,19 +268,52 @@ function renderSummary() {
         button.classList.toggle("is-on", on);
         button.setAttribute("aria-pressed", on ? "true" : "false");
     });
+    let capped = false;
     EXTRAS.forEach(function (extra) {
         const out = document.getElementById("extra-count-" + extra.id);
         const qty = pledge.extras[extra.id] || 0;
         out.textContent = String(qty);
-        out.closest(".adopt-extra").classList.toggle("is-on", qty > 0);
+        const row = out.closest(".adopt-extra");
+        row.classList.toggle("is-on", qty > 0);
+        const minus = row.querySelector("[data-step=\"-1\"]");
+        const plus = row.querySelector("[data-step=\"1\"]");
+        minus.disabled = qty === 0;
+        plus.disabled = qty === CAP;
+        if (qty === CAP) {
+            capped = true;
+        }
     });
+    document.getElementById("adopt-cap").hidden = !capped;
+    paintKeep(bird);
 
     renderSpend(level.price);
     fillFormSummary();
 }
 
+function paintKeep(bird) {
+    const follow = document.getElementById("adopt-follow");
+    const save = document.getElementById("adopt-save");
+    const real = bird && bird.id !== ANY.id;
+    follow.hidden = !real;
+    if (real) {
+        follow.setAttribute("data-follow", bird.id);
+        const on = qyFollowing(bird.id);
+        follow.classList.toggle("is-on", on);
+        follow.setAttribute("aria-pressed", on ? "true" : "false");
+        follow.querySelector(".qy-follow__text").textContent = on ? "Following" : "Follow " + bird.name;
+    } else {
+        follow.removeAttribute("data-follow");
+    }
+    save.disabled = !bird;
+    const note = document.getElementById("adopt-saved");
+    const many = qyPlan().length;
+    note.textContent = many
+        ? (many === 1 ? "One plan is saved in My aviary." : many + " plans are saved in My aviary.")
+        : "";
+}
+
 function fillFormSummary() {
-    const bird = pledge.birdId ? birdById(pledge.birdId) : null;
+    const bird = chosenBird();
     const level = levelById(pledge.levelId);
     const box = document.getElementById("pledge-summary");
     if (!box) {
@@ -268,6 +333,10 @@ function setBird(id) {
 
 function readQuery() {
     const match = location.search.match(/bird=([a-z]+)/);
+    if (match && match[1] === ANY.id) {
+        pledge.birdId = ANY.id;
+        return;
+    }
     if (match && birdById(match[1])) {
         pledge.birdId = match[1];
         const level = birdById(match[1]).monthly;
@@ -380,46 +449,6 @@ const FIELDS = [
     }
 ];
 
-function fieldValue(field) {
-    if (field.type === "checkbox") {
-        return field.checked ? "yes" : "";
-    }
-    return field.value.trim();
-}
-
-function showError(id, message) {
-    const field = document.getElementById(id);
-    const box = document.getElementById("err-" + id);
-    if (message) {
-        field.classList.add("is-invalid");
-        field.setAttribute("aria-invalid", "true");
-        box.textContent = message;
-        box.hidden = false;
-    } else {
-        field.classList.remove("is-invalid");
-        field.removeAttribute("aria-invalid");
-        box.textContent = "";
-        box.hidden = true;
-    }
-}
-
-function checkField(rule) {
-    const field = document.getElementById(rule.id);
-    const message = rule.check(fieldValue(field), field);
-    showError(rule.id, message);
-    return !message;
-}
-
-function checkAll() {
-    let first = null;
-    FIELDS.forEach(function (rule) {
-        if (!checkField(rule) && !first) {
-            first = rule.id;
-        }
-    });
-    return first;
-}
-
 function successPanel() {
     const bird = pledge.birdId ? birdById(pledge.birdId) : null;
     const level = levelById(pledge.levelId);
@@ -447,9 +476,7 @@ function successPanel() {
 
     const form = document.getElementById("pledge-form");
     form.reset();
-    FIELDS.forEach(function (rule) {
-        showError(rule.id, "");
-    });
+    qyClearErrors(FIELDS);
     form.hidden = true;
     box.hidden = false;
     if (window.qyToast) {
@@ -460,9 +487,7 @@ function successPanel() {
 function resetForm() {
     const form = document.getElementById("pledge-form");
     form.reset();
-    FIELDS.forEach(function (rule) {
-        showError(rule.id, "");
-    });
+    qyClearErrors(FIELDS);
     document.getElementById("message-hint").textContent = "Anything we should know. Optional.";
     renderSummary();
 }
@@ -513,7 +538,7 @@ document.getElementById("adopt-extras").addEventListener("click", function (even
 });
 
 document.getElementById("adopt-next").addEventListener("click", function (event) {
-    if (this.getAttribute("aria-disabled") === "true") {
+    if (!pledge.birdId) {
         event.preventDefault();
         if (window.qyToast) {
             qyToast("Choose one of the twenty birds first.", "warn");
@@ -529,13 +554,9 @@ document.getElementById("adopt-next").addEventListener("click", function (event)
 
 document.getElementById("pledge-form").addEventListener("submit", function (event) {
     event.preventDefault();
-    const first = checkAll();
+    const first = qyCheckAll(FIELDS);
     if (first) {
-        const field = document.getElementById(first);
-        if (window.jQuery) {
-            jQuery(document.scrollingElement || document.documentElement).stop(true, true).animate({ scrollTop: jQuery(field).offset().top - 120 }, 400);
-        }
-        field.focus({ preventScroll: true });
+        qyFocusFirst(first);
         if (window.qyToast) {
             qyToast("Something is missing — see the red lines.", "warn");
         }
@@ -544,26 +565,13 @@ document.getElementById("pledge-form").addEventListener("submit", function (even
     successPanel();
 });
 
-FIELDS.forEach(function (rule) {
-    const field = document.getElementById(rule.id);
-    const event = field.type === "checkbox" || field.tagName === "SELECT" || field.type === "date" ? "change" : "input";
-    field.addEventListener(event, function () {
-        if (field.classList.contains("is-invalid")) {
-            checkField(rule);
-        }
-    });
-    field.addEventListener("blur", function () {
-        if (fieldValue(field)) {
-            checkField(rule);
-        }
-    });
-});
+qyWatchFields(FIELDS);
 
 document.querySelectorAll("input[name='topic']").forEach(function (radio) {
     radio.addEventListener("change", function () {
         const message = document.getElementById("message");
         if (message.classList.contains("is-invalid")) {
-            checkField(FIELDS[6]);
+            qyCheckField(FIELDS[6]);
         }
         const label = document.getElementById("message-hint");
         label.textContent = this.value === "bird"
@@ -577,4 +585,31 @@ document.getElementById("pledge-again").addEventListener("click", function () {
     document.getElementById("pledge-form").hidden = false;
     resetForm();
     document.getElementById("name").focus();
+});
+
+document.getElementById("adopt-save").addEventListener("click", function () {
+    const bird = chosenBird();
+    if (!bird) {
+        if (window.qyToast) {
+            qyToast("Choose a bird first — Any bird is the top card.", "warn");
+        }
+        document.querySelector(".adopt-bird").focus();
+        return;
+    }
+    const many = qyPlanAdd({
+        bird: bird.id,
+        level: pledge.levelId,
+        months: pledge.months,
+        extras: Object.assign({}, pledge.extras),
+        at: new Date().toISOString().slice(0, 10)
+    });
+    renderSummary();
+    if (window.qyToast) {
+        qyToast(money(totalCost()) + " for " + (bird.id === ANY.id ? "any bird" : bird.name)
+            + " is in My aviary. " + (many === 1 ? "It is the only plan saved." : many + " plans are saved now."));
+    }
+});
+
+document.addEventListener("qyran:store", function () {
+    paintKeep(chosenBird());
 });
