@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Sign up or log in to keep your own list of birds and your support plan at the Qyran bird of prey rescue centre. A student demo: the account is stored in your own browser.">
+    <title>Join the keepers - Qyran bird of prey rescue centre</title>
+    <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+        (function () {
+            var saved = null;
+            try {
+                saved = localStorage.getItem("qyran:mode");
+            } catch (error) {
+                saved = null;
+            }
+            var dark = saved ? saved === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+            document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
+            document.documentElement.setAttribute("data-bs-theme", dark ? "dark" : "light");
+        }());
+    </script>
+</head>
+<body>
+    <a class="visually-hidden-focusable qy-skip" href="#main">Skip to content</a>
+
+    <nav class="navbar navbar-expand-xl qy-nav sticky-top" data-bs-theme="dark">
+        <div class="container">
+            <a class="navbar-brand qy-brand" href="index.html">
+                <svg class="qy-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="M2.5 15.5c3.4.2 6-1.1 7.8-3.9L12 8.4l1.7 3.2c1.8 2.8 4.4 4.1 7.8 3.9" />
+                </svg>
+                <span>Qyran</span>
+            </a>
+            <div class="qy-nav__tools">
+                <button class="qy-mode" type="button" id="qyMode" aria-pressed="false">
+                    <svg class="qy-mode__sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <circle cx="12" cy="12" r="4.2" />
+                        <path d="M12 2.6v2.2M12 19.2v2.2M4.4 12H2.2M21.8 12h-2.2M6.5 6.5 5 5M19 19l-1.5-1.5M17.5 6.5 19 5M5 19l1.5-1.5" />
+                    </svg>
+                    <svg class="qy-mode__moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path d="M20.2 14.6A8.6 8.6 0 0 1 9.4 3.8a8.6 8.6 0 1 0 10.8 10.8z" />
+                    </svg>
+                    <span class="qy-mode__label">Dark mode</span>
+                </button>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#qyMenu" aria-controls="qyMenu" aria-expanded="false" aria-label="Open the menu">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="qyMenu">
+                <ul class="navbar-nav ms-auto mb-2 mb-xl-0">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="birds.html">Birds</a></li>
+                    <li class="nav-item"><a class="nav-link" href="board.html">Board</a></li>
+                    <li class="nav-item"><a class="nav-link" href="visit.html">Visit</a></li>
+                    <li class="nav-item"><a class="nav-link" href="tickets.html">Tickets</a></li>
+                    <li class="nav-item"><a class="nav-link" href="support.html">Support</a></li>
+                    <li class="nav-item"><a class="nav-link" href="game.html">Game</a></li>
+                </ul>
+                <ul class="navbar-nav qy-nav__account" id="qyAccount">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="account.html">Log in</a></li>
+                </ul>
+                <a class="btn qy-btn qy-btn--line ms-xl-3" href="tel:+77052140019">Rescue line 705 214 00 19</a>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main">
+        <header class="qy-pagehead qy-pagehead--account">
+            <div class="container">
+                <p class="qy-crumb"><a href="index.html">Home</a> &rsaquo; Join or log in</p>
+                <p class="qy-eyebrow qy-eyebrow--light">Keepers</p>
+                <h1 class="qy-display">Keep your own list of birds</h1>
+                <p class="qy-muted qy-muted--light mb-0">A keeper account remembers which birds you follow and the support plan you put together, so you do not have to build it again on your next visit. It takes one form and no money.</p>
+            </div>
+        </header>
+
+        <section class="qy-section">
+            <div class="container">
+                <div class="qy-demo" role="note">
+                    <p class="qy-demo__title">This is a student project, not a real service</p>
+                    <p class="mb-0">The account is kept in this browser only, in localStorage, and the password is stored as a short hash of what you type. Nothing is sent anywhere and nobody checks it. <strong>Never type a password that you use on a real website.</strong> &ldquo;keeper1234&rdquo; is a good one to use here.</p>
+                </div>
+
+                <div class="row g-4 g-lg-5 mt-1">
+                    <div class="col-lg-7">
+                        <h2 class="qy-h2">Sign up</h2>
+                        <p class="qy-muted">Seven fields. The phone and the village are here because that is what the centre asks a volunteer for anyway.</p>
+
+                        <form class="qy-form" id="signup-form" action="#" method="post" novalidate>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="su-name" class="form-label">Name</label>
+                                    <input type="text" class="form-control" id="su-name" name="name" placeholder="Name Surname" maxlength="60" autocomplete="name" aria-describedby="err-su-name">
+                                    <p class="qy-error" id="err-su-name" role="alert" hidden></p>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="su-email" class="form-label">E-mail</label>
+                                    <input type="email" class="form-control" id="su-email" name="email" placeholder="you@example.com" autocomplete="email" aria-describedby="err-su-email">
+                                    <p class="qy-error" id="err-su-email" role="alert" hidden></p>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="su-phone" class="form-label">Phone</label>
+                                    <input type="tel" class="form-control" id="su-phone" name="phone" placeholder="+7 705 000 00 00" autocomplete="tel" aria-describedby="err-su-phone">
+                                    <p class="qy-error" id="err-su-phone" role="alert" hidden></p>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="su-village" class="form-label">Village or city</label>
+                                    <input type="text" class="form-control" id="su-village" name="village" placeholder="Berel" maxlength="40" aria-describedby="err-su-village">
+                                    <p class="qy-error" id="err-su-village" role="alert" hidden></p>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="su-pass" class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="su-pass" name="pass" autocomplete="new-password" aria-describedby="su-pass-hint err-su-pass">
+                                    <p class="form-text" id="su-pass-hint">At least eight characters, with a letter and a digit.</p>
+                                    <p class="qy-error" id="err-su-pass" role="alert" hidden></p>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="su-again" class="form-label">Repeat the password</label>
+                                    <input type="password" class="form-control" id="su-again" name="again" autocomplete="new-password" aria-describedby="err-su-again">
+                                    <p class="qy-error" id="err-su-again" role="alert" hidden></p>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="su-demo" name="demo" aria-describedby="err-su-demo">
+                                        <label class="form-check-label" for="su-demo">I understand this is a demo and I am not using a real password</label>
+                                    </div>
+                                    <p class="qy-error" id="err-su-demo" role="alert" hidden></p>
+                                </div>
+                            </div>
+
+                            <div class="qy-form__actions">
+                                <button type="submit" class="btn qy-btn qy-btn--solid">Create my keeper account</button>
+                                <p class="qy-hint mb-0">You stay on this device. There is no e-mail to confirm.</p>
+                            </div>
+                        </form>
+
+                        <div class="qy-done" id="signup-done" hidden>
+                            <p class="qy-done__tag">Account created</p>
+                            <h3 class="qy-done__title" id="signup-done-title">Welcome.</h3>
+                            <p class="qy-done__text" id="signup-done-text">Taking you to your aviary&hellip;</p>
+                            <a class="btn qy-btn qy-btn--ghost" href="profile.html">Open My aviary</a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-5">
+                        <div class="qy-aside qy-aside--login">
+                            <h2 class="qy-aside__title">Log in</h2>
+                            <p class="qy-muted qy-muted--light">With the e-mail and password you used when you signed up in this browser.</p>
+
+                            <form class="qy-form qy-form--dark" id="login-form" action="#" method="post" novalidate>
+                                <div class="mb-3">
+                                    <label for="li-email" class="form-label">E-mail</label>
+                                    <input type="email" class="form-control" id="li-email" name="email" placeholder="you@example.com" autocomplete="email" aria-describedby="err-li-email">
+                                    <p class="qy-error" id="err-li-email" role="alert" hidden></p>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="li-pass" class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="li-pass" name="pass" autocomplete="current-password" aria-describedby="err-li-pass">
+                                    <p class="qy-error" id="err-li-pass" role="alert" hidden></p>
+                                </div>
+                                <p class="qy-error" id="err-login" role="alert" hidden></p>
+                                <button type="submit" class="btn qy-btn qy-btn--light">Log in</button>
+                            </form>
+
+                            <p class="qy-hint qy-hint--light mb-0" id="login-count"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="qy-section qy-section--bone">
+            <div class="container">
+                <p class="qy-eyebrow">What it is for</p>
+                <h2 class="qy-h2 mb-4">Three things an account does on this site</h2>
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+                    <div class="col">
+                        <article class="card qy-card h-100">
+                            <div class="card-body">
+                                <h3 class="qy-h3">Follow a bird</h3>
+                                <p class="card-text">Press Follow on any of the twenty birds and it goes into your aviary with its stage, its reason for being here and the day it arrived.</p>
+                                <a class="btn qy-btn qy-btn--ghost mt-2" href="birds.html">Open the catalogue</a>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col">
+                        <article class="card qy-card h-100">
+                            <div class="card-body">
+                                <h3 class="qy-h3">Keep a support plan</h3>
+                                <p class="card-text">Build a level, a number of months and the extras the centre needs, save it, and the total waits for you on your profile page instead of in your head.</p>
+                                <a class="btn qy-btn qy-btn--ghost mt-2" href="support.html#adopt">Build a plan</a>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col">
+                        <article class="card qy-card h-100">
+                            <div class="card-body">
+                                <h3 class="qy-h3">One browser, one list</h3>
+                                <p class="card-text">Everything is saved by your own browser, so the list is on this device only. Clear the browser data and it is gone &mdash; that is the honest limit of a site without a server.</p>
+                                <a class="btn qy-btn qy-btn--ghost mt-2" href="profile.html">See what is saved</a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.7.1.min.js"><\/script>');</script>
+    <script src="js/theme.js"></script>
+    <script src="js/store.js"></script>
+    <script src="js/form.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/account.js"></script>
+    <script src="js/effects.js"></script>
+</body>
+</html>
