@@ -601,7 +601,7 @@ document.getElementById("adopt-save").addEventListener("click", function () {
         level: pledge.levelId,
         months: pledge.months,
         extras: Object.assign({}, pledge.extras),
-        at: new Date().toISOString().slice(0, 10)
+        at: qyToday()
     });
     renderSummary();
     if (window.qyToast) {

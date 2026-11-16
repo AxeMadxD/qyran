@@ -169,13 +169,6 @@ function formatDate(iso) {
     return new Date(year, month - 1, day).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
 }
 
-function todayIso() {
-    const now = new Date();
-    const month = String(now.getMonth() + 1).padStart(2, "0");
-    const day = String(now.getDate()).padStart(2, "0");
-    return now.getFullYear() + "-" + month + "-" + day;
-}
-
 function compare(a, b) {
     if (sortSelect.value === "name") {
         return a.name.localeCompare(b.name);
@@ -439,7 +432,7 @@ admitForm.addEventListener("submit", (event) => {
         food: Number(data.food.value),
         critical: data.critical.checked,
         tags: [data.group.value, data.cause.value],
-        admitted: todayIso(),
+        admitted: qyToday(),
         stage: "treatment"
     };
     birds.push(bird);

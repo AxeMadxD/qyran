@@ -58,6 +58,13 @@ function qyUser() {
     return null;
 }
 
+function qyToday() {
+    const now = new Date();
+    const month = String(now.getMonth() + 1).padStart(2, "0");
+    const day = String(now.getDate()).padStart(2, "0");
+    return now.getFullYear() + "-" + month + "-" + day;
+}
+
 function qyOwner() {
     const user = qyUser();
     return user ? user.id : "guest";
@@ -209,7 +216,7 @@ function qySignUp(fields) {
         phone: fields.phone.trim(),
         village: fields.village.trim(),
         pass: qyHash(fields.pass),
-        joined: new Date().toISOString().slice(0, 10)
+        joined: qyToday()
     });
     data.session = { id: id, at: new Date().toISOString() };
     if (guest && (guest.follows.length || guest.plan.length)) {
