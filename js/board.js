@@ -45,6 +45,54 @@ const clearButton = document.querySelector("#clear");
 const admitForm = document.querySelector("#admit");
 const admitStatus = document.querySelector("#admit-status");
 
+admitForm.noValidate = true;
+
+const ADMIT_FIELDS = [
+    {
+        id: "new-name",
+        check: (value) => {
+            if (!value) {
+                return "Give the new patient a name.";
+            }
+            if (value.length < 2) {
+                return "Two letters at least.";
+            }
+            const taken = birds.some((bird) => bird.name.toLowerCase() === value.toLowerCase());
+            return taken ? "There is already a bird called " + value + " on the board. Give this one another name." : "";
+        }
+    },
+    {
+        id: "new-species",
+        check: (value) => {
+            if (!value) {
+                return "Which species came in?";
+            }
+            return value.length < 3 ? "Write the species in full, as in Steppe eagle." : "";
+        }
+    },
+    {
+        id: "new-group",
+        check: (value) => (value ? "" : "Choose the group the bird belongs to.")
+    },
+    {
+        id: "new-cause",
+        check: (value) => (value ? "" : "Choose what happened to it.")
+    },
+    {
+        id: "new-food",
+        check: (value) => {
+            if (!value) {
+                return "How much meat does it need a day?";
+            }
+            const grams = Number(value);
+            if (!Number.isFinite(grams)) {
+                return "Write the amount in grams, in digits.";
+            }
+            return grams < 20 || grams > 1500 ? "Between 20 and 1500 grams a day." : "";
+        }
+    }
+];
+
 function el(tag, className, text) {
     const node = document.createElement(tag);
     if (className) {
@@ -371,18 +419,17 @@ clearButton.addEventListener("click", () => {
 
 admitForm.addEventListener("submit", (event) => {
     event.preventDefault();
+    const first = qyCheckAll(ADMIT_FIELDS);
+    if (first) {
+        admitStatus.textContent = "Something is missing. The red lines under the fields say what.";
+        admitStatus.classList.remove("board-status--ok");
+        admitStatus.classList.add("board-status--blocked");
+        qyFocusFirst(first);
+        return;
+    }
+
     const data = admitForm.elements;
     const name = data.name.value.trim();
-
-    for (const bird of birds) {
-        if (bird.name.toLowerCase() === name.toLowerCase()) {
-            admitStatus.textContent = "There is already a bird called " + bird.name + " on the board. Give the new one another name.";
-            admitStatus.classList.remove("board-status--ok");
-            admitStatus.classList.add("board-status--blocked");
-            data.name.focus();
-            return;
-        }
-    }
 
     const bird = {
         id: nextId(),
@@ -401,9 +448,12 @@ admitForm.addEventListener("submit", (event) => {
     admitStatus.classList.remove("board-status--blocked");
     admitStatus.classList.add("board-status--ok");
     admitForm.reset();
+    qyClearErrors(ADMIT_FIELDS);
     report(bird.name + " was admitted.", "ok");
     state.blockedId = null;
     render();
 });
+
+qyWatchFields(ADMIT_FIELDS);
 
 render();
