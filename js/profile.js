@@ -329,11 +329,32 @@ document.getElementById("profile-out").addEventListener("click", function () {
     paintAll();
 });
 
-document.getElementById("profile-forget").addEventListener("click", function () {
+const forget = document.getElementById("profile-forget");
+const forgetLabel = forget.textContent;
+let armed = null;
+
+function disarm() {
+    window.clearTimeout(armed);
+    armed = null;
+    forget.textContent = forgetLabel;
+    forget.classList.remove("is-armed");
+}
+
+forget.addEventListener("click", function () {
     const user = qyUser();
     if (!user) {
         return;
     }
+    if (armed === null) {
+        armed = window.setTimeout(disarm, 6000);
+        forget.textContent = "Press again to delete";
+        forget.classList.add("is-armed");
+        if (window.qyToast) {
+            qyToast("Nothing is deleted yet. Press the button again to remove the account and its lists.", "warn");
+        }
+        return;
+    }
+    disarm();
     const data = qyRead();
     data.users = data.users.filter(function (one) {
         return one.id !== user.id;

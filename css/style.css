@@ -3439,6 +3439,12 @@ html {
     color: var(--on-color);
 }
 
+.qy-btn--danger.is-armed {
+    background-color: var(--crit);
+    border-color: var(--crit);
+    color: var(--on-color);
+}
+
 .qy-keep {
     display: flex;
     flex-direction: column;
