@@ -214,8 +214,7 @@ img {
     margin-bottom: 0.5rem;
 }
 
-.qy-h2--light,
-.qy-h3--light {
+.qy-h2--light {
     color: var(--on-inverse);
 }
 
